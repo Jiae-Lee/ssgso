@@ -20,7 +20,7 @@ import com.project.ssgso.dto.BoardDto;
 import com.project.ssgso.service.BoardService;
 
 @Controller
-public class boardController {
+public class BoardController {
 
 	@Autowired
 	private BoardFreeDao boardfreeDao;
