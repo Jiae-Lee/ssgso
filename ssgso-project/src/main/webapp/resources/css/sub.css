@@ -16,12 +16,18 @@ width: 200px;
 height: 110px;}
 .logo img{ width: 200px; height: 110px;}
 
-#login { position: relative; top: 5px; right: 15px; width: 300px; height: 25px; float: right;}
+#login { position: relative; top: 5px; right: 15px; width: 300px; height: 25px; float: right; text-align: right;}
 
 nav { float: left; width: 700px; margin-top: 10px; position: relative;}
 
 section { width:100%; margin: 10px 0 0 0; padding: 0;}
-#content { width: 1000px; min-height: 600px; margin: 0 auto; padding: 10px; }
+#content { 
+	width: 1000px; 
+	min-height: 600px; 
+	border: 1px solid #dedcee; 
+	border-radius: 5px; 
+	margin: 10px auto; 
+	padding: 10px; }
 
 
 footer { width:100%; background: #333; color: white; padding: 10px;}
