@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="memberMapper">
+	<select id="selectMemberList" resultType="com.project.ssgso.dto.MemberDto">
+		SELECT  mem_no, grade, id, password, name, email, 
+				gender, decode(gender, 'm', '남', 'w', '여') as gender, 
+				to_char(create_date, 'YYYY-MM-DD HH24:MI:SS') AS create_date
+		FROM    MEMBER
+	</select>
+	<select id="selectMember" parameterType="int" resultType="com.project.ssgso.dto.MemberDto">
+		SELECT  MEM_NO, GRADE, ID, PASSWORD, NAME, EMAIL, 
+				GENDER, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD HH24:MI:SS') AS CREATE_DATE
+		FROM    MEMBER
+		WHERE MEM_NO = #{MEM_NO}
+	</select>
+	<select id="test" resultType="String">
+		SELECT EMAIL
+		FROM MEMBER
+		WHERE MEM_NO = 1
+	</select>
+</mapper>
+
