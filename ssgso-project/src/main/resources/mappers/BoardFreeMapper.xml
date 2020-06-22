@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BoardFreeMapper">
+<!-- boaedFree메인화면 -->
+	<select id="boardFree" resultType="com.project.ssgso.dto.BoardDto">
+
+		SELECT
+		    BOARD_NO,
+		    BOARD_TYPE,
+		    TITLE,
+		    CONTENT,
+		    TO_CHAR(CREATE_DATE, 'YYYY-MM-DD HH24:MI:SS') AS create_data,
+		    VIEW_CNT,
+		    MEM_NO
+		FROM
+		    BOARD
+		ORDER BY BOARD_NO
+	</select>
+
+	<insert id="insertBoardFree" parameterType="java.util.HashMap">
+
+		INSERT INTO BOARD
+		(
+			BOARD_NO
+			,TITLE
+			,CONTENT
+			,CREATE_DATE
+		) 
+		VALUES
+		(
+			BOARD_SEQ.NEXTVAL 
+			,#{title} 
+			,#{content}
+			,SYSDATE
+		 )
+
+	</insert>
+
+	<select id="selectBoardFree" resultType="com.project.ssgso.dto.BoardDto">
+		SELECT
+		    BOARD_NO,
+		    BOARD_TYPE,
+		    TITLE,
+		    CONTENT,
+		    TO_CHAR(CREATE_DATE, 'YYYY-MM-DD HH24:MI:SS') AS create_data,
+		    VIEW_CNT,
+		    MEM_NO
+		FROM
+		    BOARD
+		WHERE 
+		BOARD_NO = #{BOARD_NO}
+
+	</select>
+
+	<update id="updateBoardFree" parameterType="java.util.HashMap" >
+		UPDATE BOARD
+		SET
+		TITLE=#{TITLE},
+		WHERE BOARD_NO=#{BOARD_NO}
+	</update>
+
+	<delete id="deleteBoardFree" parameterType="java.util.HashMap">
+
+		DELETE FROM BOARD
+		WHERE BOARD_NO = #{BOARD_NO}
+
+	</delete>
+
+
+
+
+</mapper>
