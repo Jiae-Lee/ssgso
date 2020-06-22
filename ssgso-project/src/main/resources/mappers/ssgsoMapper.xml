@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="ssgsoMapper">
+	
+	<!-- 숙소 전체 조회  -->
+	<select id="selectAccomodationAllList" resultType="com.project.ssgso.dto.AccomodationDto">
+		SELECT AC_NO, NAME, INFO, AC_IMG, LATITUDE, LONGITUDE, ADDRESS 
+		FROM ACCOMODATION
+	</select>
+	
+	<!-- 숙소 상세 조회  -->
+	<select id="selectAccomodation" parameterType="int" resultType="com.project.ssgso.dto.AccomodationDto">
+		SELECT AC_NO, NAME, INFO, AC_IMG, LATITUDE, LONGITUDE, ADDRESS
+		FROM ACCOMODATION
+		WHERE AC_NO = #{ac_no}
+	</select>
+	
+	<!-- 숙소 디테일(룸) 전체 조회  -->
+	<select id="selectRoomAllList" resultType="com.project.ssgso.dto.RoomDto">
+		SELECT ROOM_NO, TITLE, CONTENT, MIN_PER, MAX_PER, PRICE, AC_NO
+		FROM ROOM
+	</select>
+	
+	</mapper>
