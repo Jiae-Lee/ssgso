@@ -1,0 +1,6 @@
+@charset "UTF-8";
+
+.secLeft { width:20%; min-height: 580px; float:left; margin: 0; border: 1px solid yellow; list-style-type : none;}
+.mylist { list-style-type: none; text-align : left; }
+
+.secRight { width:80%; min-height: 580px; height: 100%; float:left; margin: 0; padding: 10px; border: 1px solid orange;}

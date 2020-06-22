@@ -17,12 +17,6 @@ public class MemberServiceImpl implements IMemberService{
 	public List<MemberDto> selectMemberList() {
 		return memberDaoImpl.selectMemberList();
 	}
-
-	@Override
-	public MemberDto selectMember(int mem_no) {
-		return memberDaoImpl.selectMember(mem_no);
-	}
-
 	
 
 }
