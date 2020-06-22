@@ -21,22 +21,14 @@ public class MemberController {
 	
 	@RequestMapping(value="/member/list")
 	public String selectMemberList(Model model) {
-		System.out.println("===");
 		List<MemberDto> memberList = memberServiceImpl.selectMemberList();
 		
 		System.out.println(memberList);
 		
-		model.addAttribute("memberList", memberList);
+		model.addAttribute("list", memberList);
 		
 		
 		return "member/list";
-	}
-	
-	@RequestMapping(value="/member/select")
-	public String selectMember(Model model) {
-		MemberDto md = memberServiceImpl.selectMember(1);
-		
-		return "member/select";
 	}
 	
 }

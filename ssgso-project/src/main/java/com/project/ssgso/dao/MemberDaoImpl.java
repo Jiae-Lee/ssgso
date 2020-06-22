@@ -25,10 +25,4 @@ public class MemberDaoImpl implements IMemberDao{
 		
 		return memberDtoList;
 	}
-
-	@Override
-	public MemberDto selectMember(int mem_no) {
-		MemberDto memberDto = sqlSession.selectOne("memberMapper.selectMember", mem_no);
-		return memberDto;
-	}
 }
