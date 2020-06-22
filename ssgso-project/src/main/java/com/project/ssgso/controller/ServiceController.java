@@ -16,14 +16,9 @@ public class ServiceController {
 		return"service/serviceNoticeWrite";
 	}
 	
-	@RequestMapping(value = "/service/serviceQuestion")
+	@RequestMapping(value = "/service/servicePolicy")
 	public String serviceQuestion() {
-		return"service/serviceQuestion";
+		return"service/servicePolicy";
 	}
 	
-	@RequestMapping(value = "/service/serviceOnetooneView")
-	public String serviceOnetooneView() {
-			return"service/serviceOnetooneView";
-	}
-
 }

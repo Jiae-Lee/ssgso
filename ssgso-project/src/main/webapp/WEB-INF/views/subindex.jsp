@@ -10,6 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>subindex</title>
+<link rel="shortcut icon" type="image/x-icon" href="<c:url value="/images/favicon.ico"/>">
 <link rel="stylesheet" href="<c:url value="/css/sub.css"/>" type="text/css"/>
 </head>
 <body><%-- 

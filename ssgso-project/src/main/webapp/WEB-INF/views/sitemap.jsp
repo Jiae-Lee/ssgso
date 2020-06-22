@@ -13,8 +13,8 @@
 <link rel="shortcut icon" type="image/x-icon" href="<c:url value="images/favicon.ico"/>">
 <link rel="stylesheet" href="<c:url value="css/sub.css"/>" type="text/css"/>
 <style>
-.sitelistwrap { width: 33%; float: left; border: 1px solid purple; background: lightgray;
-	list-style-type : none;}
+.sitelistwrap { width: 33%; float: left; border: 1px solid purple; background: lightgray; }
+.sitelistwrap ul li { list-style-type : none;}
 
 </style>
 </head>
@@ -36,7 +36,7 @@
 		<div id="content">
 		 
 			<div class="sitelistwrap">
-			<h2>숙소</h2>
+			<h1>숙소</h1>
 			<ul>
 				<li><a href="<%=contextPath%>/ssgso/ssgsoRanking">상위랭킹목록</a></li>
 				<li><a href="<%=contextPath%>/ssgso/ssgsoThemeRecommend">추천테마</a></li>
@@ -44,7 +44,7 @@
 			</div>
 			
 			<div class="sitelistwrap">
-			<h2>커뮤니티</h2>
+			<h1>커뮤니티</h1>
 				<ul>
 					<li><a href="<%=contextPath%>/board/boardFree">자유게시판</a></li>
 					<li><a href="<%=contextPath%>/board/boardEvent">이벤트게시판</a></li>
@@ -52,7 +52,7 @@
 			</div>
 			
 			<div class="sitelistwrap">	
-			<h2>고객센터</h2>
+			<h1>고객센터</h1>
 				<ul>
 					<li><a href="<%=contextPath%>/service/serviceNotice">공지사항</a></li>
 					<li><a href="<%=contextPath%>/service/servicePolicy">약관정책</a></li>
