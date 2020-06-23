@@ -22,11 +22,11 @@ table {
 <body>
 	<br>
 	<br>
-	<form action="<%=contextPath%>/login/joinCustomer" method="get">
+	<form action="<%=contextPath%>/join/joinCustomer" method="get">
 		<input type="submit" value="일반 회원가입">
 	</form>
 	<br>
-	<form action="<%=contextPath%>/login/joinPartner" method="get">
+	<form action="<%=contextPath%>/join/joinPartner" method="get">
 		<input type="submit" value="파트너 회원가입">
 	</form>
 </body>
