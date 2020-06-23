@@ -16,7 +16,7 @@ width: 200px;
 height: 110px;}
 .logo img{ width: 200px; height: 110px;}
 
-#login { position: relative; top: 5px; right: 15px; width: 300px; height: 25px; float: right; text-align: right;}
+#login { position: relative; top: 5px; right: 15px; height: 25px; float: right; text-align: right;}
 
 nav { float: left; width: 700px; margin-top: 10px; position: relative;}
 
@@ -31,4 +31,3 @@ section { width:100%; margin: 10px 0 0 0; padding: 0;}
 
 
 footer { width:100%; background: #333; color: white; padding: 10px;}
-.b {font-weight: bold;}

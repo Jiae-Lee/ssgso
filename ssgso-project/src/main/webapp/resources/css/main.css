@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* 
+/*
 연노랑 #fffcf0
 연보라 #dedcee
 보라   #6a60a9
@@ -26,7 +26,7 @@ ssgsologo1 = 200 185
 ssgsologo2 = 200 110
 
  */
-#login { position: relative; top: 5px; right: 15px; width: 300px; height: 25px; float: right; text-align: right;}
+#login { position: relative; top: 5px; right: 15px; height: 25px; float: right; text-align: right;}
 
 nav { float: left; width: 700px; margin-top: 10px; position: relative;}
 
@@ -203,4 +203,3 @@ section { width:100%; }
 
 
 footer { width:100%; background: #333; color: white; padding: 10px;}
-.b {font-weight: bold;}
