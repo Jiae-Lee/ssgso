@@ -11,9 +11,9 @@
 <meta charset="UTF-8">
 <title>SSGSO</title>
 
-<link rel="shortcut icon" type="image/x-icon" href="<c:url value="images/favicon.ico"/>">
-<link rel="stylesheet" href="<c:url value="css/main.css"/>" type="text/css"/>
-<script type="text/javascript" src="<c:url value="js/main.js"/>"></script>
+<link rel="shortcut icon" type="image/x-icon" href="<c:url value="/images/favicon.ico"/>">
+<link rel="stylesheet" href="<c:url value="/css/main.css"/>" type="text/css"/>
+<script type="text/javascript" src="<c:url value="/js/main.js"/>"></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script>
@@ -43,7 +43,7 @@ $(document).ready(function(){
 		</div>
 		
 		<div class="logo">
-		 	<a href="<%=contextPath%>/index"><img src="<c:url value="images/logo2.png"/>"></a>
+		 	<a href="<%=contextPath%>/index"><img src="<c:url value="/images/logo2.png"/>"></a>
 		</div>
 		
 		<nav>
@@ -60,10 +60,10 @@ $(document).ready(function(){
 		
 		<div id="jsimage">
 			<div class="bxslider">
-				<div><img src="<c:url value="images/blur1.png"/>" alt="사진1"></div>
-				<div><img src="<c:url value="images/blur2.png"/>" alt="사진2"></div>
-				<div><img src="<c:url value="images/blur3.png"/>" alt="사진3"></div>
-				<div><img src="<c:url value="images/blur4.png"/>" alt="사진4"></div>
+				<div><img src="<c:url value="/images/blur1.png"/>" alt="사진1"></div>
+				<div><img src="<c:url value="/images/blur2.png"/>" alt="사진2"></div>
+				<div><img src="<c:url value="/images/blur3.png"/>" alt="사진3"></div>
+				<div><img src="<c:url value="/images/blur4.png"/>" alt="사진4"></div>
 			</div>		
 		</div><!-- end : jsimage -->
 		

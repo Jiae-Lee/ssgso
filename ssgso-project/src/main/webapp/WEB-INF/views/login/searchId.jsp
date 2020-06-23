@@ -9,6 +9,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		if('${msgId}' != "") {
+			alert('${msgId}');
+		}
+	})
+</script>
 <style>
 body {
 	text-align: center;
@@ -19,9 +27,10 @@ table {
 }
 </style>
 </head>
+
 <body>
 	아이디 찾기
-	<form action="<%=contextPath%>/login/loginForm" method="get">
+	<form action="<%=contextPath%>/searchId.do" method="POST">
 		<table>
 			<tr>
 				<td>이름</td>
@@ -34,6 +43,8 @@ table {
 			</tr>
 		</table>
 	</form>
-
+	<a href="<%=contextPath%>/join/joinHome">회원가입ㅣ</a>
+	<a href="<%=contextPath%>/index">[인덱스]ㅣ</a>
+	<a href="<%=contextPath%>/login/loginForm">로그인</a>
 </body>
 </html>

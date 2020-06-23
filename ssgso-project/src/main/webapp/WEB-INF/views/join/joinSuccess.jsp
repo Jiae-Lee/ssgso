@@ -21,7 +21,7 @@ table {
 <body>
 
 	SSKSO 회원가입이 완료되었습니다.
-	<input type="button" value="<%=contextPath%>/login/loginForm">
+	<input type="button" value="로그인 하러 가기" onclick="window.location.href='<%=contextPath%>/login/loginForm'">
 
 </body>
 </html>

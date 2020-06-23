@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="loginMapper">
+
+	<!-- 회원 로그인 체크(비밀번호 체크) -->
+	<select id="loginCheck" resultType="String">
+		SELECT NAME FROM MEMBER
+		WHERE ID = #{member_id} AND PASSWORD = #{password}  
+	</select>
+	
+	<!-- 회원 로그인 정보 -->
+	<select id="viewMember" resultType="com.project.ssgso.dto.MemberDto">
+		SELECT NAME, ID as member_id, EMAIL, CREATE_DATE
+		FROM MEMBER
+		WHERE ID = #{member_id} AND PASSWORD = #{password} 
+	</select>
+	
+	<!-- 아이디 찾기 -->
+	<select id="getId" resultType="String" parameterType="java.util.HashMap">
+		SELECT ID
+		FROM MEMBER
+		WHERE NAME=#{name} AND EMAIL=#{email}
+	</select>
+	
+	<!-- 패스워드 찾기 - 이메일로 보낼 용도 -->
+	<select id="getPassword" resultType="String" parameterType="java.util.HashMap">
+		SELECT PASSWORD
+		FROM MEMBER
+		WHERE ID=#{member_id} AND EMAIL=#{email}
+	</select>
+</mapper>
+
