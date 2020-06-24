@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import com.project.ssgso.dto.BoardDto;
+import com.project.ssgso.dto.EventBoardDto;
 
 public interface BoardService {
 
@@ -27,6 +28,28 @@ public interface BoardService {
 	// 목록조회
 	public List<BoardDto> selectBoardFreeList(HashMap<String, String> parmMap);
 	
+	
+	
+	
+	
+	
+	
+	public List<EventBoardDto> BoardEvent();
+
+	//등록
+		public int insertBoardEvent(HashMap<String, String> paramMap);
+
+		public EventBoardDto selectBoardEvent(int board_no);
+
+	//수정
+		public void updateBoardEvent(HashMap<String, String> paramMap);
+
+	//삭제
+		public void deleteBoardEvent(int board_no);
+
+	//목록조회
+		public List<EventBoardDto> selectBoardEventList(HashMap<String, String> parmMap);
+
 
 
 }

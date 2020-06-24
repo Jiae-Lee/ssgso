@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.ssgso.dao.BoardFreeDao;
 import com.project.ssgso.dto.BoardDto;
+import com.project.ssgso.dto.EventBoardDto;
 import com.project.ssgso.service.BoardService;
 import com.project.ssgso.service.BoardServiceImpl;
 
@@ -25,7 +26,6 @@ public class BoardController {
 
 	@Autowired
 	private BoardFreeDao boardfreeDao;
-	
 
 	// 메인화면
 	@RequestMapping(value = "board/boardFree")
@@ -56,28 +56,27 @@ public class BoardController {
 	public String insertBoardFree(@RequestParam HashMap<String, String> parmMap) {
 		System.out.println("insertBoardFree::START");
 		int result = boardfreeDao.insertBoardFree(parmMap);
-		System.out.println("result=["+result+"]");
+		System.out.println("result=[" + result + "]");
 		return "redirect:boardFree";
 
 	}
 
 	// 업데이트
 	@RequestMapping(value = "/updateBoardFree")
-	public String updateBoardFree(@RequestParam HashMap<String, String> paramMap,RedirectAttributes redirectAttributes) {
+	public String updateBoardFree(@RequestParam HashMap<String, String> paramMap,
+			RedirectAttributes redirectAttributes) {
 		System.out.println("parmMap=" + paramMap);
-		
-		if(paramMap.get("flag").equals("u")) 
-		{
+
+		if (paramMap.get("flag").equals("u")) {
 			boardfreeDao.updateBoardFree(paramMap);
-		}else 
-		{
+		} else {
 			boardfreeDao.deleteBoardFree(Integer.parseInt(paramMap.get("BOARD_NO")));
 		}
-		
-		redirectAttributes.addAttribute("board_no",paramMap.get("BOARD_NO"));
-		
+
+		redirectAttributes.addAttribute("board_no", paramMap.get("BOARD_NO"));
+
 		return "redirect:board/boardFree";// 내부에서처리
-		//내부에서 처리함
+		// 내부에서 처리함
 	}
 
 	// 삭제
@@ -88,7 +87,6 @@ public class BoardController {
 		return "redirect:board/boardFree";
 	}
 
-	
 //조건조회
 	@RequestMapping(value = "/board/boardFreeView")
 	public String boardFreeView() {
@@ -102,21 +100,87 @@ public class BoardController {
 		model.addAttribute("list", boardfreeList);
 		return "/board/boardFreeView";
 	}
+
 	
 	
-	@RequestMapping(value = "/board/boardEvent")
-	public String boardEvent() {
+	
+	
+	////////////////////////////////이벤트메인화면///////////////////////////////////////// 
+	@RequestMapping(value = "board/boardEvent")
+	public String BoardEvent(Model model) {
+		System.out.println("boardEvent11111::start");
+		List<EventBoardDto> boardEventList = boardfreeDao.BoardEvent();
+		for(int i=0; i<boardEventList.size(); i++) {
+			System.out.println("date=["+boardEventList.get(i).getEcreate_date()+"]");
+		}
+		model.addAttribute("list", boardEventList);
 		return "/board/boardEvent";
 	}
 
+	// 이벤트상세조회
+	@RequestMapping(value = "board/selectBoardEvent")
+	public String selectBoardEvent(@RequestParam("eboard_no") int eboard_no, Model model) {
+		System.out.println("selectBoardEventboard_no[" + eboard_no + "]");
+		EventBoardDto eventBoardDto = boardfreeDao.selectBoardEvent(eboard_no);
+		model.addAttribute("EventBoardDto", eventBoardDto);
+		return "/board/selectBoardEvent";
+	}
+
+	// 이벤트작성화면
 	@RequestMapping(value = "/board/boardEventWrite")
 	public String boardEventWrite() {
 		return "/board/boardEventWrite";
 	}
 
+	// 이벤트게시판입력
+	@RequestMapping(value = "board/insertBoardEvent")
+	public String insertBoardEvent(@RequestParam HashMap<String, String> parmMap) {
+		System.out.println("insertBoardEvent1111::START");
+		System.out.println("insertboard param :"+parmMap);
+		int result = boardfreeDao.insertBoardEvent(parmMap);
+		System.out.println("result=[" + result + "]");
+		return "redirect:boardEvent";
+
+	}
+
+	// 이벤트업데이트
+	@RequestMapping(value = "/updateBoardEvent")
+	public String updateBoardEvent(@RequestParam HashMap<String, String> paramMap,
+			RedirectAttributes redirectAttributes) {
+		System.out.println("updateBoardEventparmMap=" + paramMap);
+
+		if (paramMap.get("flag").equals("u")) {
+			boardfreeDao.updateBoardEvent(paramMap);
+		} else {
+			boardfreeDao.deleteBoardEvent(Integer.parseInt(paramMap.get("EBOARD_NO")));
+		}
+
+		redirectAttributes.addAttribute("eboard_no", paramMap.get("EBOARD_NO"));
+
+		return "redirect:board/boardEvent";// 내부에서처리
+		// 내부에서 처리함
+	}
+
+	// 이벤트삭제
+	@RequestMapping(value = "/deleteBoardEvent")
+	public String deleteBoardEvent(@RequestParam("board_no") int EBOARD_NO) {
+		System.out.println("controllerdeleteBoardEvent::::::board_no[" + EBOARD_NO + "]");
+		boardfreeDao.deleteBoardEvent(EBOARD_NO);
+		return "redirect:board/boardEvent";
+	}
+
+//이벤트조건조회
 	@RequestMapping(value = "/board/boardEventView")
 	public String boardEventView() {
 		return "/board/boardEventView";
+	}
+
+	@RequestMapping(value = "/selectBoardEventList")
+	public String selectBoardEventList(@RequestParam HashMap<String, String> parmMap, Model model) {
+		System.out.println("parmMap selectBoardEventList=[" + parmMap + "]");
+		List<EventBoardDto> boardeventList = boardfreeDao.selectBoardEventList(parmMap);
+		model.addAttribute("list", boardeventList);
+		return "/board/boardFreeView";
 	}
 
 }
