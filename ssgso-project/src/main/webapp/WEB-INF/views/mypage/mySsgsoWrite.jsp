@@ -24,8 +24,38 @@
 		document.form.roadFullAddr.value = roadFullAddr;
 	}
 </script>
+<style>
+.rightheader {
+	width: 95%; 
+	height: 50px; 
+	line-height: 50px;
+	font-size: 20pt; 
+	background: #6a60a9; 
+	color: #fff;
+	margin: 0 auto;
+	vertical-align: middle;
+	}
 
+table.list {
+	width: 95%;
+	margin: 10px auto;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.6;
+	}
+.list th{ width: 20%; text-align : center; background: #dedcee;}
+.list td{ width: 80%; height: 22px;}
+.list td input {
+	width: 98%; 
+	margin: 0 10px;
+    border-color: #dedcee;
+    border-style: solid;}
 
+.list #addbutton { width: 100px; float: right; border: none; height: 22px; background: #6a60a9; color: #fff; margin: 10px 3px 0 0;}
+.list #resetbutton { width: 100px; float: right; border: none; height: 22px; margin-top: 10px;}
+.searchButton {position: relative; top: -147px; magin: 0; padding: 0; left: 310px; width: 100px; height: 22px; border: none;}
+
+</style>
 <body>
 	<header>
 		<div class="logo">
@@ -45,45 +75,51 @@
 				<jsp:include page="../include/myLeftmenu.jsp" />
 			</div>
 			
+			
 			<div class="secRight">
 			
-			<button onclick="goPopup()">주소 검색</button><br>
-			
+				<div class="rightheader">숙소 등록</div>
 				<form name="form" action="<%=contextPath%>/mypage/mySsgsoCreate" method="post">
-					<table style="text-align: center;">
+					<table class="list">
 						<tr>
-							<td colspan="1">숙소 위치</td>
-							<td><input type="text" style="width:500px;" id="roadFullAddr" name="roadFullAddr" placeholder="주소를 입력해 주세요" required="true" readonly="true" /></td>
-						</tr>
-						<tr>
-							<td>숙소 이름</td>
+							<th>숙소명</th>
 							<td><input type="text" name="name"></td>
 						</tr>
 						<tr>
-							<td>숙소 사진</td>
+							<th>가격</th>
+							<td><input type="text" name="ac_price"></td>
+						</tr>
+						<tr>
+							<th>계좌 번호</th>
+							<td><input type="text" name="ac_account"></td>
+						</tr>
+						<tr>
+							<th>주소</th>
+							<td>
+								<input type="text" id="roadFullAddr" style="width:80%;" name="roadFullAddr" placeholder="주소검색을 눌러 주소를 입력해주세요" required readonly />
+							</td>
+						</tr>
+						<tr>
+							<th>사진 등록</th>
 							<td><input type="text" name="ac_img"></td>
 						</tr>
 						<tr>
-							<td>숙소 정보</td><td><input type="text" name="info"></td>
-						</tr>
-				
-						<tr>
-							<td>가격</td><td><input type="text" name="ac_price"></td>
+							<th>전화번호</th>
+							<td><input type="text" name="ac_phone"></td>
 						</tr>
 						<tr>
-							<td>숙소 전화번호</td><td><input type="text" name="ac_phone"></td>
+							<th>추가 정보</th>
+							<td><input type="text" name="info"></td>
 						</tr>
 						<tr>
-							<td>무통장 계좌 번호</td><td><input type="text" name="ac_account"></td>
-						</tr>
-						
-						<tr>
-							<td><input type="reset" value="초기화"></td>
-							<td><input type="submit" value="등록"></td>
+							<td colspan="2">
+								<input type="submit" value="등록" id="addbutton">
+								<input type="reset" value="초기화" id="resetbutton">
+							</td>
 						</tr>
 					</table>
-	 
 				</form>
+				<button class="searchButton" onclick="goPopup()">주소 검색</button>
 				
 			</div>
 		</div>
