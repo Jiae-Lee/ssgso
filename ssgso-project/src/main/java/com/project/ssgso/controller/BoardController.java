@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.project.ssgso.dao.BoardFreeDao;
 import com.project.ssgso.dto.BoardDto;
 import com.project.ssgso.service.BoardService;
+import com.project.ssgso.service.BoardServiceImpl;
 
 @Controller
 public class BoardController {
@@ -32,7 +33,7 @@ public class BoardController {
 		System.out.println("BoardFree::start");
 		List<BoardDto> boardFreeList = boardfreeDao.BoardFree();
 		model.addAttribute("list", boardFreeList);
-		return "board/boardFree";
+		return "/board/boardFree";
 	}
 
 	// 상세조회
@@ -41,13 +42,13 @@ public class BoardController {
 		System.out.println("board_no[" + board_no + "]");
 		BoardDto boardDto = boardfreeDao.selectBoardFree(board_no);
 		model.addAttribute("BoardDto", boardDto);
-		return "board/selectBoardFree";
+		return "/board/selectBoardFree";
 	}
 
 	// 작성화면
 	@RequestMapping(value = "/board/boardFreeWrite")
 	public String boardFreeWrite() {
-		return "board/boardFreeWrite";
+		return "/board/boardFreeWrite";
 	}
 
 	// 게시판입력
@@ -61,26 +62,37 @@ public class BoardController {
 	}
 
 	// 업데이트
-	@RequestMapping(value = "board/updateBoardFree")
-	public String updatecjsBoardFree(@RequestParam HashMap<String, String> paramMap,
-			RedirectAttributes redirectAttributes) {
+	@RequestMapping(value = "/updateBoardFree")
+	public String updateBoardFree(@RequestParam HashMap<String, String> paramMap,RedirectAttributes redirectAttributes) {
 		System.out.println("parmMap=" + paramMap);
-		redirectAttributes.addAttribute("board_no", paramMap.get("board_no"));
-		return "redirect:/selectBaordFree";// 내부에서처리
+		
+		if(paramMap.get("flag").equals("u")) 
+		{
+			boardfreeDao.updateBoardFree(paramMap);
+		}else 
+		{
+			boardfreeDao.deleteBoardFree(Integer.parseInt(paramMap.get("BOARD_NO")));
+		}
+		
+		redirectAttributes.addAttribute("board_no",paramMap.get("BOARD_NO"));
+		
+		return "redirect:board/boardFree";// 내부에서처리
+		//내부에서 처리함
 	}
 
 	// 삭제
-	@RequestMapping(value = "board/deleteBoardFree")
-	public String deleteBoardFree(@RequestParam("Board_no") int board_no) {
-		System.out.println("board_no[" + board_no + "]");
-		boardfreeDao.deleteBoardFree(board_no);
-		return "board/boardFreeView";
+	@RequestMapping(value = "/deleteBoardFree")
+	public String deleteBoardFree(@RequestParam("board_no") int BOARD_NO) {
+		System.out.println("controller::::::board_no[" + BOARD_NO + "]");
+		boardfreeDao.deleteBoardFree(BOARD_NO);
+		return "redirect:board/boardFree";
 	}
 
+	
 //조건조회
 	@RequestMapping(value = "/board/boardFreeView")
 	public String boardFreeView() {
-		return "board/boardFreeView";
+		return "/board/boardFreeView";
 	}
 
 	@RequestMapping(value = "/selectBoardFreeList")
@@ -88,23 +100,23 @@ public class BoardController {
 		System.out.println("parmMap=[" + parmMap + "]");
 		List<BoardDto> boardfreeList = boardfreeDao.selectBoardFreeList(parmMap);
 		model.addAttribute("list", boardfreeList);
-		return "board/boardFreeView";
+		return "/board/boardFreeView";
 	}
 	
 	
 	@RequestMapping(value = "/board/boardEvent")
 	public String boardEvent() {
-		return "board/boardEvent";
+		return "/board/boardEvent";
 	}
 
 	@RequestMapping(value = "/board/boardEventWrite")
 	public String boardEventWrite() {
-		return "board/boardEventWrite";
+		return "/board/boardEventWrite";
 	}
 
 	@RequestMapping(value = "/board/boardEventView")
 	public String boardEventView() {
-		return "board/boardEventView";
+		return "/board/boardEventView";
 	}
 
 }
