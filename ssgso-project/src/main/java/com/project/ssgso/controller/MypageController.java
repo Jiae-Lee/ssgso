@@ -1,15 +1,19 @@
 package com.project.ssgso.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.ssgso.dto.AccomodationDto;
+import com.project.ssgso.dto.RoomDto;
 import com.project.ssgso.service.SsgsoServiceImpl;
 
 
@@ -35,10 +39,24 @@ public class MypageController {
 	}
 
 	@RequestMapping(value="/mypage/mySsgsoList")
-	public String mySsgsoList() {
+	public String mySsgsoList(Model model) {
+		
+		List <AccomodationDto> AccomodationDtoList =
+				ssgsoServiceImpl.selectAccomodationAllList();
+		model.addAttribute("list",AccomodationDtoList);
 		return "mypage/mySsgsoList";
 	}
 
+	@RequestMapping(value="/mypage/mySsgsoListView")
+	public String mySsgsoListView(@RequestParam ("ac_no") int ac_no, Model model) {
+		AccomodationDto AccomodationDto= ssgsoServiceImpl.selectAccomodation(ac_no);
+		model.addAttribute("AccomodationDto", AccomodationDto);
+		
+		List <RoomDto> RoomDtoList = ssgsoServiceImpl.selectRoomAllList();
+		model.addAttribute("list",RoomDtoList); 
+		return "mypage/mySsgsoListView";
+	}
+	
 	@RequestMapping(value="/mypage/mySsgsoWrite")
 	public String mySsgsoWrite() {
 		return "mypage/mySsgsoWrite";
