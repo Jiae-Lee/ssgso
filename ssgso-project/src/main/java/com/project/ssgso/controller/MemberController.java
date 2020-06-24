@@ -2,6 +2,8 @@ package com.project.ssgso.controller;
 
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +29,8 @@ public class MemberController {
 	@RequestMapping(value = "/join/joinHome")
 	public String joinHome() 
 	{
-		System.out.println("joinHome::Start");
+		logger.info("joinHome::Start");
+		//System.out.println("joinHome::Start");
 		return "join/joinHome";
 	}
 
@@ -53,9 +56,6 @@ public class MemberController {
 		return result;
 	}	
 		
-	// 패스워드 확인
-		
-		
 	// 회원가입정보를 다 입력하고 회원가입 버튼을 누른다. -> 요청 파라미터 처리 방식
 	@RequestMapping(value = "/join/joinSuccess", method = RequestMethod.GET)
 	public String memberJoin(@RequestParam HashMap<String, String> paramMap, MemberDto memberDto) {
@@ -76,6 +76,25 @@ public class MemberController {
 		//System.out.println("memberJoin::success");
 		
 		return "join/joinSuccess"; // 실행이 완료 되었다면 joinSuccess로 이동
+	}
+	
+	// mypage-myInfo에 있는 회원정보 수정
+	@RequestMapping(value = "/memberUpdate", method = RequestMethod.POST)
+	public String memberUpdate(MemberDto memberDto, HttpSession session) {
+		logger.info(memberDto+"");
+		memberServiceImpl.memberUpdate(memberDto,session);
+		
+		return "mypage/myInfo"; // 회원정보수정 창 새로고침
+	}
+	
+	// 회원 탈퇴
+	@RequestMapping(value = "/memberDelete", method = RequestMethod.POST)
+	public String memberDelete(MemberDto memberDto, HttpSession session) {
+
+		memberServiceImpl.memberDelete(memberDto);
+		session.invalidate();
+
+		return "index"; // 회원정보수정 창 새로고침
 	}
 
 }

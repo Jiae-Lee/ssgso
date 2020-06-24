@@ -14,7 +14,7 @@
 	
 	<!-- 회원 로그인 정보 -->
 	<select id="viewMember" resultType="com.project.ssgso.dto.MemberDto">
-		SELECT NAME, ID as member_id, EMAIL, CREATE_DATE
+		SELECT NAME, ID as member_id, EMAIL, CORPORATE_NO, GENDER, CREATE_DATE
 		FROM MEMBER
 		WHERE ID = #{member_id} AND PASSWORD = #{password} 
 	</select>

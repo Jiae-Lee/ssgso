@@ -28,4 +28,10 @@ public interface IMemberDao {
 
 	// 패스워드 찾기
 	public String getPassword(HashMap<String, Object> paramMap);
+	
+	// 회원정보 수정
+	public int memberUpdate(MemberDto memberDto);
+
+	// 회원 탈퇴
+	public void memberDelete(MemberDto memberDto);
 }

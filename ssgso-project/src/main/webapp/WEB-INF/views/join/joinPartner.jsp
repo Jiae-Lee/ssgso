@@ -56,30 +56,52 @@ $(function () {
 		var chk=$('#check').val();
 		var regExp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/; // 정규식-이메일 유효성 검사
 		
-		if($('#email').val()=="") { // 이메일 공백 검사
+		// 이름 공백 확인
+		if($('#name').val()=="") {
+			alert("이름을 입력해주세요.");
+			return false;
+		}
+		
+		// 이메일 공백 확인
+		if($('#email').val()=="") {
 			alert("이메일을 입력해주세요.");
 			return false;
-		} else if($('#corporate_no').val()==""){ // 사업자번호 공백 검사
-			alert("사업자번호를 입력해주세요.");
-			return false;
-		} else if(!regExp.test($('#email').val())) { // 이메일 유효성 검사
+		} 
+
+		// 이메일 유효성 검사
+		if(!regExp.test($('#email').val())) {
 			alert("이메일 주소가 유효하지 않습니다.");
 			$('#email').focus();
 			return false;
-		} else if($('#corporate_no').val().length!=10){ // 사업자번호 10자 확인
+		}
+
+		// 사업자번호 공백 검사
+		if($('#corporate_no').val()==""){ // 사업자번호 공백 검사
+			alert("사업자번호를 입력해주세요.");
+			return false;	
+		} 
+
+		// 사업자번호 자릿수 검사
+		if($('#corporate_no').val().length!=10){ // 사업자번호 10자 확인
 			alert("사업자번호는 10자입니다.");
 			return false;
-		} else if(pwd.length<4 || pwd.length>12 ){ // 비밀번호 글자수 검사
+		}	
+		
+		// 비밀번호 자릿수 검사
+		if(pwd.length<4 || pwd.length>12 ){
 			alert("비밀번호는 4자리 이상 12자리 이하여야 합니다.");
 			$('#password').val("");
 			$('#check').val("");
 			$('#password').focus();
 			return false;
-		} else if(pwd != "" || chk != "") { // 비밀번호, 비밀번호확인 공백 검사
-			if(pwd == chk) { // 패스워드랑 패스워드 확인이 같을 시
+		}
+
+		// 비밀번호 공백 검사, 서로 확인
+		if(pwd != "" || chk != "") {
+			if(pwd == chk) {
 				alert("비밀번호 확인 완료, 회원가입 성공")
 				return true;
-			} else { // 패스워드랑 패스워드 확인이 다를 시
+			} else {
 				alert("비밀번호를 다시 입력해주세요.")
 				$('#password').val("");
 				$('#check').val("");
@@ -107,7 +129,7 @@ table {
 		<table>
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" id="member_id" name="member_id" size="20" maxlength="15"
+				<td><input type="text" id="member_id" name="member_id" size="20" maxlength="12"
 					required></td>
 				<td><button class="idCheck" type="button" id="idCheck" value="N">중복확인</button></td>
 			</tr>
@@ -118,23 +140,23 @@ table {
 			</tr>
 			<tr>
 				<td>이메일</td>
-				<td><input type="text" id="email" name="email" size="20" maxlength="20"
+				<td><input type="text" id="email" name="email" size="20" maxlength="20" placeholder="ex) a@b.c"
 					required></td>
 			</tr>
 			<tr>
 				<td>사업자번호</td>
-				<td><input type="number" id="corporate_no" name="corporate_no" size="20" maxlength="15"
+				<td><input type="number" id="corporate_no" name="corporate_no" size="20" maxlength="10" placeholder="10자리수"
 					required></td>
 			</tr>
 			<tr>
 				<td>패스워드</td>
 				<td><input type="password" id="password" name="password" size="20"
-					maxlength="15" required></td>
+					maxlength="20" placeholder="4~12자리" required></td>
 			</tr>
 			<tr>
 				<td>패스워드 확인</td>
 				<td><input type="password" id="check" name="check" size="20"
-					maxlength="15" required></td>
+					maxlength="20" placeholder="4~12자리" required></td>
 			</tr>
 			<tr>
 				<td>성별</td>

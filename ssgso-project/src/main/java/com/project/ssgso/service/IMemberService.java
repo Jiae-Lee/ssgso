@@ -29,4 +29,10 @@ public interface IMemberService {
 
 	// 패스워드 찾기
 	public String getPassword(HashMap<String, Object> paramMap);
+	
+	// 회원정보 수정
+	public void memberUpdate(MemberDto memberDto,HttpSession session);
+	
+	// 회원 탈퇴
+	public void memberDelete(MemberDto memberDto);
 }
