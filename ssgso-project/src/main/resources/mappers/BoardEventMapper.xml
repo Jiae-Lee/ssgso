@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BoardEventMapper">
+	<!-- boaedFree메인화면 -->
+	<select id="boardEvent"
+		resultType="com.project.ssgso.dto.EventBoardDto">
+		SELECT
+		    EBOARD_NO,
+		    EBOARD_TYPE,
+		    ETITLE,
+		    ECONTENT,
+				TO_CHAR(ECREATE_DATE, 'YYYY-MM-DD HH24:MI:SS') AS ecreate_date,
+		    EVIEW_CNT,
+		    EMEM_NO
+		FROM
+		    EVENTBOARD
+				ORDER BY EBOARD_NO DESC
+	</select>
+
+	<insert id="insertBoardEvent" parameterType="java.util.HashMap">
+
+		INSERT INTO EVENTBOARD
+		(
+		EBOARD_NO
+		,ETITLE
+		,ECONTENT
+		,ECREATE_DATE
+		)
+		VALUES
+		(
+		EBOARD_SEQ.NEXTVAL
+		,#{etitle}
+		,#{econtent}
+		,SYSDATE
+		)
+
+	</insert>
+
+	<select id="selectBoardEvent"
+		resultType="com.project.ssgso.dto.EventBoardDto">
+		SELECT
+		EBOARD_NO,
+		EBOARD_TYPE,
+		ETITLE,
+		ECONTENT,
+		TO_CHAR(ECREATE_DATE, 'YYYY-MM-DD HH24:MI:SS') AS ecreate_date,
+		EVIEW_CNT,
+		EMEM_NO
+		FROM
+		EVENTBOARD
+		WHERE
+		EBOARD_NO = #{EBOARD_NO}
+
+	</select>
+
+	<update id="updateBoardEvent" parameterType="java.util.HashMap">
+		UPDATE EVENTBOARD
+		SET
+		ETITLE=#{etitle},
+		ECONTENT=#{econtent},
+		ECREATE_DATE=SYSDATE
+
+		WHERE EBOARD_NO=#{EBOARD_NO}
+	</update>
+
+
+
+	<delete id="deleteBoardEvent" parameterType="int">
+
+		DELETE FROM EVENTBOARD
+
+		WHERE EBOARD_NO = #{EBOARD_NO}
+
+	</delete>
+
+
+	<update id="updateViewcnt">
+		UPDATE EVENTBOARD
+		SET
+		EVIEW_CNT = EVIEW_CNT+1
+		WHERE EBOARD_NO= #{EBOARD_NO}
+	</update>
+
+
+</mapper>

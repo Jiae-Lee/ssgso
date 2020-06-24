@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.project.ssgso.dao.BoardFreeDao;
 import com.project.ssgso.dao.BoardFreeDaoImpl;
 import com.project.ssgso.dto.BoardDto;
+import com.project.ssgso.dto.EventBoardDto;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -58,8 +59,47 @@ public class BoardServiceImpl implements BoardService {
 		return boardfreeDaoImpl.selectBoardFreeList(parmMap);
 	}
 
+	
+	
+	
+	
+	//////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
+	
+	@Override
+	public List<EventBoardDto> BoardEvent() {
+		return boardfreeDaoImpl.BoardEvent();
+	}
 
+	@Override
+	public int insertBoardEvent(HashMap<String, String> paramMap) {
+		return boardfreeDaoImpl.insertBoardEvent(paramMap);
+	}
 
+	@Override
+	public EventBoardDto selectBoardEvent(int eboard_no) {
+		return boardfreeDaoImpl.selectBoardEvent(eboard_no);
+	}
+
+	@Override
+	public void updateBoardEvent(HashMap<String, String> paramMap) {
+		boardfreeDaoImpl.updateBoardEvent(paramMap);
+		
+	}
+
+	@Override
+	public void deleteBoardEvent(int eboard_no) {
+		boardfreeDaoImpl.deleteBoardEvent(eboard_no);
+	}
+
+	@Override
+	public List<EventBoardDto> selectBoardEventList(HashMap<String, String> parmMap) {
+		// TODO Auto-generated method stub
+		return boardfreeDaoImpl.selectBoardEventList(parmMap);
+	}
 
 
 

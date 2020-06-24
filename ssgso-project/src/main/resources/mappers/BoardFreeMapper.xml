@@ -78,13 +78,12 @@
 	</delete>
 
 
-	<update id="updateViewcnt">
+	<update id="updateViewcnt" parameterType="int">
 		UPDATE BOARD
 		SET
 		VIEW_CNT = VIEW_CNT+1
 		WHERE BOARD_NO= #{BOARD_NO}
 	</update>
-
 
 
 </mapper>

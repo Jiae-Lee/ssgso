@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.project.ssgso.dto.BoardDto;
+import com.project.ssgso.dto.EventBoardDto;
 
 @Repository
 public class BoardFreeDaoImpl implements BoardFreeDao {
@@ -64,6 +65,50 @@ sqlSession. update("BoardFreeMapper.updateBoardFree",paramMap );
 	public void updateViewcnt(int board_no) {
 		sqlSession.update("BoardFreeMapper.updateViewcnt",board_no);
 		
+	}
+	
+	
+	/*이벤트게시판
+	 * 
+	 */
+
+	@Override
+	public List<EventBoardDto> BoardEvent() {
+		List<EventBoardDto> EventBoardDtoList = new ArrayList<EventBoardDto>();
+		EventBoardDtoList = sqlSession.selectList("BoardEventMapper.boardEvent");
+		System.out.println("list::"+EventBoardDtoList);
+		return EventBoardDtoList ;
+	}
+
+	@Override
+	public int insertBoardEvent(HashMap<String, String> paramMap) {
+		return sqlSession.insert("BoardEventMapper.insertBoardEvent", paramMap);
+	}
+
+	@Override
+	public EventBoardDto selectBoardEvent(int board_no) {
+		EventBoardDto EventBoardDto= sqlSession.selectOne("BoardEventMapper.selectBoardEvent",board_no);
+		return EventBoardDto;
+	}
+
+	@Override
+	public void updateBoardEvent(HashMap<String, String> paramMap) {
+		sqlSession. update("BoardEventMapper.updateBoardEvent",paramMap );
+		
+	}
+
+	@Override
+	public void deleteBoardEvent(int board_no) {
+		System.out.println("dao::boardno="+board_no);
+		sqlSession. delete("BoardEventMapper.deleteBoardEvent",board_no );
+		
+	}
+
+	@Override
+	public List<EventBoardDto> selectBoardEventList(HashMap<String, String> parmMap) {
+		List<EventBoardDto>EventBoardDtoList =new ArrayList<EventBoardDto>();
+		EventBoardDtoList = sqlSession.selectList("BoardEventMapper.selectBoardEventList",parmMap);
+			return EventBoardDtoList;
 	}
 
 
