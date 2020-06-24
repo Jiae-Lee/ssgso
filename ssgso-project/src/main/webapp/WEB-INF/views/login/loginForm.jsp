@@ -98,14 +98,14 @@ table {
 		<table>
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" id="member_id" name="member_id" size="20" maxlength="10"
+				<td><input type="text" id="member_id" name="member_id" size="20" maxlength="12"
 					required></td>
 				<td><input type="checkbox" id="idSaveCheck">아이디 저장</td>
 			</tr>
 			<tr>
 				<td>패스워드</td>
 				<td><input type="password" id="password" name="password" size="20"
-					maxlength="20" required>
+					maxlength="12" required>
 					<c:if test="${msg == 'failure'}">
 						<div style="color: red">
 						아이디 또는 비밀번호가 일치하지 않습니다.

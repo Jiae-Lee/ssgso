@@ -33,6 +33,14 @@ public class MemberServiceImpl implements IMemberService {
 			System.out.println("서비스"+memberDto2.getMember_id());
 			session.setAttribute("memberName", memberDto2.getName());
 			System.out.println("서비스"+memberDto2.getName());
+			session.setAttribute("memberEmail", memberDto2.getEmail());
+			System.out.println("서비스"+memberDto2.getEmail());
+			session.setAttribute("memberCorporate_no", memberDto2.getCorporate_no());
+			System.out.println("서비스"+memberDto2.getCorporate_no());
+			session.setAttribute("memberGender", memberDto2.getGender());
+			System.out.println("서비스"+memberDto2.getGender());
+			session.setAttribute("memberCreate_date", memberDto2.getCreate_date());
+			System.out.println("서비스"+memberDto2.getCreate_date());
 		}
 		return result;
 	}
@@ -70,5 +78,26 @@ public class MemberServiceImpl implements IMemberService {
 	@Override
 	public String getPassword(HashMap<String, Object> paramMap) {
 		return memberDaoImpl.getPassword(paramMap);
+	}
+	
+	// 회원정보 수정
+	@Override
+	public void memberUpdate(MemberDto memberDto, HttpSession session) {
+		// 받은 memberDto를 DAO로 보내줍니다.
+		int result = memberDaoImpl.memberUpdate(memberDto);
+		System.out.println("result=["+result+"]");
+		
+		if(result !=0) // 업데이트 하면  session 값들도 변경
+		{
+			session.setAttribute("memberName", memberDto.getName());
+			System.out.println("서비스"+memberDto.getName());
+			session.setAttribute("memberEmail", memberDto.getEmail());
+			System.out.println("서비스"+memberDto.getEmail());
+		}	
+	}
+	
+	// 회원 탈퇴
+	public void memberDelete(MemberDto memberDto) {
+		memberDaoImpl.memberDelete(memberDto);
 	}
 }

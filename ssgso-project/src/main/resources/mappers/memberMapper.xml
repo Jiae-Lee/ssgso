@@ -19,6 +19,17 @@
 		WHERE ID = #{member_id}
 	</select>
 	
+	<!-- 회원정보 수정 -->
+	<update id="memberUpdate" parameterType="java.util.HashMap">
+		UPDATE MEMBER SET
+		NAME = #{name}, EMAIL = #{email}, PASSWORD=#{password}
+		WHERE ID = #{member_id}
+	</update>
 	
+	<!-- 회원 탈퇴 -->
+	<delete id="memberDelete">
+		DELETE FROM MEMBER
+		WHERE ID = #{member_id}
+	</delete>
 </mapper>
 

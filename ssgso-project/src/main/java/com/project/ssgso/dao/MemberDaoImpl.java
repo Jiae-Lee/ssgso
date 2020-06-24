@@ -64,4 +64,15 @@ public class MemberDaoImpl implements IMemberDao {
 	public String getPassword(HashMap<String, Object> paramMap) {
 		return sqlSession.selectOne("loginMapper.getPassword", paramMap);
 	}
+	
+	// 회원정보 수정
+	@Override
+	public int memberUpdate(MemberDto memberDto) {
+		return sqlSession.update("memberMapper.memberUpdate", memberDto);
+	}
+	
+	// 회원 탈퇴
+	public void memberDelete(MemberDto memberDto) {
+		sqlSession.delete("memberMapper.memberDelete", memberDto);
+	}
 }
