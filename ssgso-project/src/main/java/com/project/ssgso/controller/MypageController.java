@@ -1,10 +1,19 @@
 package com.project.ssgso.controller;
 
+import java.util.HashMap;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.project.ssgso.service.SsgsoServiceImpl;
 
 @Controller
 public class MypageController {
+	
+	@Autowired
+	private SsgsoServiceImpl ssgsoServiceImpl; 
 	
 	@RequestMapping(value="/mypage/myReservation")
 	public String myReservation() {
@@ -29,5 +38,21 @@ public class MypageController {
 	@RequestMapping(value="/mypage/mySsgsoWrite")
 	public String mySsgsoWrite() {
 		return "mypage/mySsgsoWrite";
+	}
+	
+	@RequestMapping(value="/mypage/mySsgsoCreate")
+	public String ssgsoCreate(@RequestParam HashMap<String, String> paramMap) {
+		String roadFullAddr = paramMap.get("roadFullAddr");
+		String jsonString =  ssgsoServiceImpl.getKakaoApiFromAddress(roadFullAddr);
+		
+		// x = 경도(longitude), y = 위도(latitude)
+		HashMap<String, String> XYMap = ssgsoServiceImpl.getXYMapfromJson(jsonString);
+		paramMap.put("latitude", XYMap.get("y"));
+		paramMap.put("longitude", XYMap.get("x"));
+		
+		//System.out.println("paramMap::after = " + paramMap);
+		ssgsoServiceImpl.createAccomodation(paramMap);
+		
+		return "redirect:/ssgso/ssgsoThemeRecommend";
 	}
 }

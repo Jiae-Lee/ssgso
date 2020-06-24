@@ -1,5 +1,6 @@
 package com.project.ssgso.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.project.ssgso.dto.AccomodationDto;
@@ -15,5 +16,9 @@ public interface ISsgsoService {
 	
 	//숙소 디테일(룸) 전체 조회
 	public List<RoomDto> selectRoomAllList(); 
-
+	
+	public void createAccomodation(HashMap<String, String> paramMap);
+	
+	public String getKakaoApiFromAddress(String roadFullAddr);
+	public HashMap<String, String> getXYMapfromJson(String jsonString);
 }
