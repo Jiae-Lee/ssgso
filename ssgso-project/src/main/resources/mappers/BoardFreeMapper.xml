@@ -4,71 +4,86 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="BoardFreeMapper">
-<!-- boaedFree메인화면 -->
-	<select id="boardFree" resultType="com.project.ssgso.dto.BoardDto">
+	<!-- boaedFree메인화면 -->
+	<select id="boardFree"
+		resultType="com.project.ssgso.dto.BoardDto">
 
 		SELECT
-		    BOARD_NO,
-		    BOARD_TYPE,
-		    TITLE,
-		    CONTENT,
-		    TO_CHAR(CREATE_DATE, 'YYYY-MM-DD HH24:MI:SS') AS create_data,
-		    VIEW_CNT,
-		    MEM_NO
+		BOARD_NO,
+		BOARD_TYPE,
+		TITLE,
+		CONTENT,
+		TO_CHAR(CREATE_DATE, 'YYYY-MM-DD HH24:MI:SS') AS create_data,
+		VIEW_CNT,
+		MEM_NO
 		FROM
-		    BOARD
-		ORDER BY BOARD_NO
+		BOARD
+		ORDER BY BOARD_NO DESC
 	</select>
 
 	<insert id="insertBoardFree" parameterType="java.util.HashMap">
 
 		INSERT INTO BOARD
 		(
-			BOARD_NO
-			,TITLE
-			,CONTENT
-			,CREATE_DATE
-		) 
+		BOARD_NO
+		,TITLE
+		,CONTENT
+		,CREATE_DATE
+		)
 		VALUES
 		(
-			BOARD_SEQ.NEXTVAL 
-			,#{title} 
-			,#{content}
-			,SYSDATE
-		 )
+		BOARD_SEQ.NEXTVAL
+		,#{title}
+		,#{content}
+		,SYSDATE
+		)
 
 	</insert>
 
-	<select id="selectBoardFree" resultType="com.project.ssgso.dto.BoardDto">
+	<select id="selectBoardFree"
+		resultType="com.project.ssgso.dto.BoardDto">
 		SELECT
-		    BOARD_NO,
-		    BOARD_TYPE,
-		    TITLE,
-		    CONTENT,
-		    TO_CHAR(CREATE_DATE, 'YYYY-MM-DD HH24:MI:SS') AS create_data,
-		    VIEW_CNT,
-		    MEM_NO
+		BOARD_NO,
+		BOARD_TYPE,
+		TITLE,
+		CONTENT,
+		TO_CHAR(CREATE_DATE, 'YYYY-MM-DD HH24:MI:SS') AS create_data,
+		VIEW_CNT,
+		MEM_NO
 		FROM
-		    BOARD
-		WHERE 
+		BOARD
+		WHERE
 		BOARD_NO = #{BOARD_NO}
 
 	</select>
 
-	<update id="updateBoardFree" parameterType="java.util.HashMap" >
+	<update id="updateBoardFree" parameterType="java.util.HashMap">
 		UPDATE BOARD
 		SET
-		TITLE=#{TITLE},
+		TITLE=#{title},
+		CONTENT=#{content},
+		CREATE_DATE=SYSDATE
+
 		WHERE BOARD_NO=#{BOARD_NO}
 	</update>
 
-	<delete id="deleteBoardFree" parameterType="java.util.HashMap">
+
+
+	<delete id="deleteBoardFree" parameterType="int">
 
 		DELETE FROM BOARD
+
 		WHERE BOARD_NO = #{BOARD_NO}
 
 	</delete>
 
+
+	<update id="updateViewcnt">
+		UPDATE BOARD
+		SET
+		VIEW_CNT = VIEW_CNT+1
+		WHERE BOARD_NO= #{BOARD_NO}
+	</update>
 
 
 
