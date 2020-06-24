@@ -13,10 +13,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>내 예약내역</title>
+<title>개인정보수정</title>
+<link rel="shortcut icon" type="image/x-icon" href="<c:url value="/images/favicon.ico"/>">
 <link rel="stylesheet" href="<c:url value="/css/sub.css"/>" type="text/css"/>
 <link rel="stylesheet" href="<c:url value="/css/mypage.css"/>" type="text/css"/>
-</head>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 $(function () {
@@ -80,7 +80,38 @@ $(function () {
 	});
 })
 </script>
+<style>
+.rightheader {
+	width: 95%; 
+	height: 50px; 
+	line-height: 50px;
+	font-size: 20pt; 
+	background: #6a60a9; 
+	color: #fff;
+	margin: 0 auto;
+	vertical-align: middle;
+	}
 
+table.list {
+	width: 95%;
+	margin: 10px auto;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.6;
+	}
+.list th{ width: 20%; text-align : center; background: #dedcee;}
+.list td{ width: 80%; height: 22px;}
+.list td input {
+	width: 98%; 
+	margin: 0 10px;
+    border-color: #dedcee;
+    border-style: solid;}
+
+#update { width: 100px; float: right; border: none; height: 22px; background: #6a60a9; color: #fff; margin: 10px 3px 0 0;}
+#delete { width: 100px; float: right; border: none; height: 22px; margin-top: 10px;}
+
+</style>
+</head>
 <body>
 	<header>
 		<div class="logo">
@@ -102,59 +133,61 @@ $(function () {
 			</div>
 			
 			<div class="secRight">
-			회원정보 수정
+				<div class="rightheader">개인정보 수정</div>
 				<form method="post">
-					<table>
+					<table class="list">
 						<tr>
-							<td>아이디</td>
+							<th>아이디</th>
 							<td><input type="text" id="member_id" name="member_id" value="${sessionScope.memberId}" size="20" maxlength="12"
 								readonly></td>
 						</tr>
 						<tr>
-							<td>이름</td>
+							<th>이름</th>
 							<td><input type="text" id="name" name="name" value="${sessionScope.memberName}" size="20" maxlength="10"></td>
 						</tr>
 						<tr>
-							<td>이메일</td>
+							<th>이메일</th>
 							<td><input type="text" id="email" name="email" value="${sessionScope.memberEmail}" size="20" maxlength="20"></td>
 						</tr>
 						<c:if test="${sessionScope.memberCorporate_no != 0}">
 							<tr>
-								<td>사업자번호</td>
+								<th>사업자번호</th>
 								<td><input type="text" id="corporate_no" name="corporate_no" value="${sessionScope.memberCorporate_no}" size="20" maxlength="10"></td>
 							</tr>
 						</c:if>
 
 						<tr>
-							<td>패스워드</td>
+							<th>패스워드</th>
 							<td><input type="text" id="password" name="password" size="20" maxlength="12" placeholder="4~12자리"></td>
 						</tr>
 						<tr>
-							<td>패스워드확인</td>
+							<th>패스워드확인</th>
 							<td><input type="text" id="check" name="check" size="20" maxlength="12" placeholder="4~12자리"></td>
 						</tr>
 						
 						<c:choose>
 							<c:when test="${sessionScope.gender == M}">
 								<tr>
-									<td>성별</td>
+									<th>성별</th>
 									<td><input type="text" id="gender" name="gender" value="남성" size="20" maxlength="10" readonly></td>
 								</tr>
 							</c:when>
 							<c:otherwise>
 								<tr>
-									<td>성별</td>
+									<th>성별</th>
 									<td><input type="text" id="gender" name="gender" value="여성" size="20" maxlength="10" readonly></td>
 								</tr>
 							</c:otherwise>
 						</c:choose>
 						<tr>
-							<td>회원가입일</td>
+							<th>회원가입일</th>
 							<td><input type="text" id="create_date" name="create_date" value="${sessionScope.memberCreate_date}" size="20" maxlength="20" readonly></td>
 						</tr>
 						<tr>
-							<td><input type="submit" id="update" value="수정 완료"></td>	
-							<td><input type="submit" id="delete" value="회원 탈퇴"></td>				
+							<td colspan="2">
+								<input type="submit" id="update" value="수정 완료">
+								<input type="submit" id="delete" value="회원 탈퇴">
+							</td>				
 						</tr>
 					</table>
 				</form>			

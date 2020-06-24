@@ -13,9 +13,9 @@
          	<a href="<%=contextPath%>/sitemap">사이트맵</a>
 		</c:when>
 		<c:otherwise>
-			${sessionScope.memberName}(${sessionScope.memberId})님이 로그인 중입니다.
-			<a href="<%=contextPath%>/mypage/myInfo">[마이페이지]</a>
-			<a href="<%=contextPath%>/login/logout.do">[로그아웃]</a>
+			${sessionScope.memberName}(${sessionScope.memberId})님 |
+			<a href="<%=contextPath%>/mypage/myInfo">마이페이지</a> |
+			<a href="<%=contextPath%>/login/logout.do">로그아웃</a>
 		</c:otherwise>
 	</c:choose>
 </div>

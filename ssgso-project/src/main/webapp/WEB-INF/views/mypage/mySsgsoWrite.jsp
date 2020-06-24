@@ -12,7 +12,6 @@
 <title>숙소 생성</title>
 <link rel="stylesheet" href="<c:url value="/css/sub.css"/>" type="text/css"/>
 <link rel="stylesheet" href="<c:url value="/css/mypage.css"/>" type="text/css"/>
-</head>
 <script>
 	function goPopup() {
 		// 주소 검색 팝업 페이지 호출(jusoPopup.jsp)에서 실제 주소 검색 URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do) 호출
@@ -56,6 +55,7 @@ table.list {
 .searchButton {position: relative; top: -147px; magin: 0; padding: 0; left: 310px; width: 100px; height: 22px; border: none;}
 
 </style>
+</head>
 <body>
 	<header>
 		<div class="logo">

@@ -69,7 +69,7 @@
 	<ul class="menu">
 		<li>숙소
 			<ul>
-				<li><a href="<%=contextPath%>/ssgso/ssgsoRanking">상위랭킹목록</a></li>
+				<li><a href="<%=contextPath%>/ssgso/ssgsoRanking">숙소목록</a></li>
 				<li><a href="<%=contextPath%>/ssgso/ssgsoThemeRecommend">추천테마</a></li>
 			</ul>
 		</li>
