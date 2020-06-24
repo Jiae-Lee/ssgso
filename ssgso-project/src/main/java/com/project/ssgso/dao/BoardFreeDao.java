@@ -26,4 +26,11 @@ public void deleteBoardFree(int board_no);
 //목록조회
 public List<BoardDto> selectBoardFreeList(HashMap<String, String> parmMap);
 
+//조회수
+public void updateViewcnt(int board_no);
+
 }
+
+
+
+

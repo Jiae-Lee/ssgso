@@ -10,9 +10,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자유게시판</title>
-<link rel="shortcut icon" type="image/x-icon" href="<c:url value="/images/favicon.ico"/>">
+<title>subindex</title>
 <link rel="stylesheet" href="<c:url value="/css/sub.css"/>" type="text/css"/>
+
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <style>
 table.list {
@@ -25,7 +25,8 @@ table.list {
 .list th{ text-align : center;}
 .list_no { width: 10%; text-align : center;}
 .list_title { width: 60%; padding-left: 10px; }
-.list_date { width: 30%; text-align : center;}
+.list_date { width: 20%; text-align : center;}
+.list_count { width: 10%; text-align : center;}
 
 .writebutton{float: right;}
 </style>
@@ -62,6 +63,7 @@ table.list {
 						<th class="list_no">번호</th>
 						<th class="list_title">제목</th>
 						<th class="list_date">등록일시</th>
+						<th class="list_count">조회수</th>
 					</tr>
 					</c:when>
 				</c:choose>   
@@ -70,6 +72,7 @@ table.list {
 						<td class="list_no">${dto.board_no}</td>
 						<td class="list_title"><a href="<%=contextPath%>/board/selectBoardFree?board_no=${dto.board_no}">${dto.title}</a></td>
 						<td class="list_date">${dto.create_data}</td>
+						<td class="list_count">${view_cnt}</td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -79,10 +82,18 @@ table.list {
 			</form>
 		</div>
 	</section>
-	
-	<footer>
-		<jsp:include page="../include/footer.jsp" />
-	</footer> 
+
+		<form action="<%=contextPath%>/board/boardFreeWrite" method="post">
+		<input type="submit" value="글쓰기">
+	</form>
+      
+      
+      </div>
+   </section>
+   
+   <footer>
+      <jsp:include page="../include/footer.jsp" />
+   </footer> 
 
 </body>
 </html>

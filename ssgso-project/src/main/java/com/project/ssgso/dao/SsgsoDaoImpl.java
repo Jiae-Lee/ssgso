@@ -1,6 +1,7 @@
 package com.project.ssgso.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -20,6 +21,8 @@ public class SsgsoDaoImpl implements ISsgsoDao{
 	public List<AccomodationDto> selectAccomodationAllList() {
 		List<AccomodationDto> AccomodationDtoList = 
 				new ArrayList <AccomodationDto>();
+		
+		System.out.println("-===== " + sqlSession.selectList("ssgsoMapper.selectAccomodationAllList"));
 		
 		AccomodationDtoList = sqlSession.selectList("ssgsoMapper.selectAccomodationAllList");
 		
@@ -41,5 +44,12 @@ public class SsgsoDaoImpl implements ISsgsoDao{
 		RoomDtoList = sqlSession.selectList("ssgsoMapper.selectRoomAllList");
 		
 		return RoomDtoList;
+	}
+
+	@Override
+	public void createAccomodation(HashMap<String, String> paramMap) {
+		System.out.println("DaoImpl::" + paramMap);
+		sqlSession.insert("ssgsoMapper.createAccomodation", paramMap);
+		
 	}
 }

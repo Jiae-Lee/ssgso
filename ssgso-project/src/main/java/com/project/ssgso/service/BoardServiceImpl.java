@@ -1,18 +1,21 @@
 package com.project.ssgso.service;
 
+import java.nio.channels.SeekableByteChannel;
 import java.util.HashMap;
 import java.util.List;
-
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.project.ssgso.dao.BoardFreeDao;
 import com.project.ssgso.dao.BoardFreeDaoImpl;
 import com.project.ssgso.dto.BoardDto;
 
 @Service
 public class BoardServiceImpl implements BoardService {
 
-	
 	@Autowired
 	private BoardFreeDaoImpl boardfreeDaoImpl;
 
@@ -54,6 +57,12 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		return boardfreeDaoImpl.selectBoardFreeList(parmMap);
 	}
+
+
+
+
+
+
 	
 
 }

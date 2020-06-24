@@ -7,21 +7,34 @@
 	
 	<!-- 숙소 전체 조회  -->
 	<select id="selectAccomodationAllList" resultType="com.project.ssgso.dto.AccomodationDto">
-		SELECT AC_NO, NAME, INFO, AC_IMG, LATITUDE, LONGITUDE, ADDRESS 
+		SELECT AC_NO, NAME, INFO, AC_IMG, 
+			TO_CHAR(LATITUDE, 'FM990.000000') AS latitude, TO_CHAR(LONGITUDE, 'FM990.000000') AS longitude, ADDRESS 
 		FROM ACCOMODATION
+		ORDER BY AC_NO ASC
 	</select>
 	
 	<!-- 숙소 상세 조회  -->
 	<select id="selectAccomodation" parameterType="int" resultType="com.project.ssgso.dto.AccomodationDto">
-		SELECT AC_NO, NAME, INFO, AC_IMG, LATITUDE, LONGITUDE, ADDRESS
+		SELECT AC_NO, NAME, INFO, AC_IMG, 
+			TO_CHAR(LATITUDE, 'FM990.000000') AS latitude, TO_CHAR(LONGITUDE, 'FM990.000000') AS longitude, ADDRESS 
 		FROM ACCOMODATION
 		WHERE AC_NO = #{ac_no}
+		ORDER BY AC_NO ASC
 	</select>
 	
 	<!-- 숙소 디테일(룸) 전체 조회  -->
 	<select id="selectRoomAllList" resultType="com.project.ssgso.dto.RoomDto">
 		SELECT ROOM_NO, TITLE, CONTENT, MIN_PER, MAX_PER, PRICE, AC_NO
 		FROM ROOM
+		ORDER BY ROOM_NO ASC
 	</select>
+	
+	<!-- create accomodation -->
+	<insert id="createAccomodation" parameterType="java.util.HashMap">
+		INSERT INTO ACCOMODATION
+		(AC_NO, NAME, INFO, AC_IMG, LATITUDE, LONGITUDE, ADDRESS, AC_PHONE, AC_ACCOUNT, AC_PRICE, ID) 
+		VALUES(SEQ_ACC.NEXTVAL, #{name}, #{info}, #{ac_img}, #{latitude}, #{longitude}, #{roadFullAddr}, #{ac_phone}, #{ac_account}, #{ac_price}, #{id})
+		
+	</insert>
 	
 	</mapper>

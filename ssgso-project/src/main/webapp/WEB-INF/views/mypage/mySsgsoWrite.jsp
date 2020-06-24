@@ -9,10 +9,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>내 예약내역</title>
+<title>숙소 생성</title>
 <link rel="stylesheet" href="<c:url value="/css/sub.css"/>" type="text/css"/>
 <link rel="stylesheet" href="<c:url value="/css/mypage.css"/>" type="text/css"/>
 </head>
+<script>
+	function goPopup() {
+		// 주소 검색 팝업 페이지 호출(jusoPopup.jsp)에서 실제 주소 검색 URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do) 호출
+		var pop = window.open("../popup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+	}
+	
+	function jusoCallBack(roadFullAddr) {
+		// 팝업페이지에서 입력한 주소를 받아 정보 등록
+		document.form.roadFullAddr.value = roadFullAddr;
+	}
+</script>
+
+
 <body>
 	<header>
 		<div class="logo">
@@ -22,7 +35,6 @@
 		<div id="login">
 			<jsp:include page="../include/login.jsp" />
 		</div>
-		
 		<nav>
 			<jsp:include page="../include/menu.jsp" />
 		</nav>
@@ -34,28 +46,45 @@
 			</div>
 			
 			<div class="secRight">
-				<form action="" method="post" id="acconmodation">
-					숙소 이름 <input type="text" name="name"><br>
-					숙소 사진 <input type="text" name="ac_img"><input type="button" value="사진찾기"><br>
-					숙소 정보 <input type="text" name="info"><br>
-					숙소 위치(위도 latitude,경도 longitude)<br>
-						-방 등록(방 개수 선택 최소 1개~최대 5개)
-						<select size="1">
-							<option value="1" selected>1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-						</select>
-						<br>
-							방 이름(호수) <input type="text" name="title"><br>
-							방 정보 <input type="text" name="content"><br>
-							방 가격 <input type="text" name="title"><br>
-							최소인원 <input type="text" name="min_per"><br>
-							최대인원 <input type="text" name="max_per"><br>
-					<input type="submit" value="등록">
-					<input type="reset" value="초기화">
+			
+			<button onclick="goPopup()">주소 검색</button><br>
+			
+				<form name="form" action="<%=contextPath%>/mypage/mySsgsoCreate" method="post">
+					<table style="text-align: center;">
+						<tr>
+							<td colspan="1">숙소 위치</td>
+							<td><input type="text" style="width:500px;" id="roadFullAddr" name="roadFullAddr" placeholder="주소를 입력해 주세요" required="true" readonly="true" /></td>
+						</tr>
+						<tr>
+							<td>숙소 이름</td>
+							<td><input type="text" name="name"></td>
+						</tr>
+						<tr>
+							<td>숙소 사진</td>
+							<td><input type="text" name="ac_img"></td>
+						</tr>
+						<tr>
+							<td>숙소 정보</td><td><input type="text" name="info"></td>
+						</tr>
+				
+						<tr>
+							<td>가격</td><td><input type="text" name="ac_price"></td>
+						</tr>
+						<tr>
+							<td>숙소 전화번호</td><td><input type="text" name="ac_phone"></td>
+						</tr>
+						<tr>
+							<td>무통장 계좌 번호</td><td><input type="text" name="ac_account"></td>
+						</tr>
+						
+						<tr>
+							<td><input type="reset" value="초기화"></td>
+							<td><input type="submit" value="등록"></td>
+						</tr>
+					</table>
+	 
 				</form>
+				
 			</div>
 		</div>
 	</section>

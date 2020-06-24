@@ -49,6 +49,7 @@ sqlSession. update("BoardFreeMapper.updateBoardFree",paramMap );
 	@Override
 	public void deleteBoardFree(int board_no) {
 		// TODO Auto-generated method stub
+		System.out.println("dao::boardno="+board_no);
 		sqlSession. delete("BoardFreeMapper.deleteBoardFree",board_no );
 	}
 
@@ -58,6 +59,14 @@ sqlSession. update("BoardFreeMapper.updateBoardFree",paramMap );
 	BaordDtoList = sqlSession.selectList("BoardFreeMapper.selectBoardFreeList",parmMap);
 		return BaordDtoList;
 	}
+
+	@Override
+	public void updateViewcnt(int board_no) {
+		sqlSession.update("BoardFreeMapper.updateViewcnt",board_no);
+		
+	}
+
+
 	
 
 
