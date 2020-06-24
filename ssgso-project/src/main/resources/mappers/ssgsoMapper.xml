@@ -32,8 +32,8 @@
 	<!-- create accomodation -->
 	<insert id="createAccomodation" parameterType="java.util.HashMap">
 		INSERT INTO ACCOMODATION
-		(AC_NO, NAME, INFO, AC_IMG, LATITUDE, LONGITUDE, ADDRESS, AC_PHONE, AC_ACCOUNT, AC_PRICE) VALUES
-		(SEQ_ACC.NEXTVAL, #{name}, #{info}, #{ac_img}, #{latitude}, #{longitude}, #{roadFullAddr}, #{ac_phone}, #{ac_account}, #{ac_price})
+		(AC_NO, NAME, INFO, AC_IMG, LATITUDE, LONGITUDE, ADDRESS, AC_PHONE, AC_ACCOUNT, AC_PRICE, ID) 
+		VALUES(SEQ_ACC.NEXTVAL, #{name}, #{info}, #{ac_img}, #{latitude}, #{longitude}, #{roadFullAddr}, #{ac_phone}, #{ac_account}, #{ac_price}, #{id})
 		
 	</insert>
 	

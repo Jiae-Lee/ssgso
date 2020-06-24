@@ -76,10 +76,6 @@ public class SsgsoServiceImpl implements ISsgsoService{
 				docJson.append(line);
 			}
 			
-			if (0 < docJson.toString().length()) {
-				System.out.println("docJson : " + docJson.toString());
-			}
-			
 			jsonString = docJson.toString();
 			rd.close();
 			
@@ -95,7 +91,7 @@ public class SsgsoServiceImpl implements ISsgsoService{
 
 	@Override
 	public HashMap<String, String> getXYMapfromJson(String jsonString) {
-		System.out.println("getXYMapfromJson::");
+		//System.out.println("getXYMapfromJson::");
 		ObjectMapper mapper = new ObjectMapper();
 		HashMap<String, String> XYMap = new HashMap<String, String>();
 		

@@ -2,6 +2,8 @@ package com.project.ssgso.controller;
 
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,7 +43,7 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value="/mypage/mySsgsoCreate")
-	public String ssgsoCreate(@RequestParam HashMap<String, String> paramMap) {
+	public String ssgsoCreate(@RequestParam HashMap<String, String> paramMap, HttpSession session) {
 		String roadFullAddr = paramMap.get("roadFullAddr");
 		String jsonString =  ssgsoServiceImpl.getKakaoApiFromAddress(roadFullAddr);
 		
@@ -49,6 +51,8 @@ public class MypageController {
 		HashMap<String, String> XYMap = ssgsoServiceImpl.getXYMapfromJson(jsonString);
 		paramMap.put("latitude", XYMap.get("y"));
 		paramMap.put("longitude", XYMap.get("x"));
+		paramMap.put("id", (String) session.getAttribute("memberId"));
+		
 		
 		//System.out.println("paramMap::after = " + paramMap);
 		ssgsoServiceImpl.createAccomodation(paramMap);
