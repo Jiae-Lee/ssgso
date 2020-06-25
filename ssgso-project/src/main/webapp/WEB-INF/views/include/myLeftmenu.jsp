@@ -1,14 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
    String contextPath = request.getContextPath();
 %>
 				
 <ul class="mylist">
+	<c:if test="${sessionScope.memberGrade==1 && sessionScope.memberGrade==0 }">
 	<li><a href="<%=contextPath%>/mypage/myReservation">예약내역</a></li>
+	</c:if>	
+	
+	
 	<li><a href="<%=contextPath%>/mypage/myInfo">개인정보수정</a></li>
-	<li><a href="<%=contextPath%>/mypage/mySsgsoList">내 숙소목록</a></li>
-	<li><a href="<%=contextPath%>/mypage/mySsgsoWrite">숙소등록</a></li>
+
+	<c:if test="${sessionScope.memberGrade==2}">
+			<li><a href="<%=contextPath%>/mypage/mySsgsoList">내 숙소목록</a></li>
+        	<li><a href="<%=contextPath%>/mypage/mySsgsoWrite">숙소등록</a></li>
+	</c:if>
+	
 </ul>
 
 <!-- 
