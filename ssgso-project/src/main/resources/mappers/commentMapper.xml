@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="commentMapper">
+
+<select id="readComment" resultType="com.project.ssgso.dto.CommentDto">
+	SELECT
+	    bno
+	    , rno
+	    , content
+	    , writer
+	    , TO_CHAR(REGDATE, 'YYYY-MM-DD HH24:MI:SS') AS REGDATE
+	FROM
+	    BOARD_COMMENT
+		WHERE BNO=#{board_no}
+</select>
+
+<insert id="insertComment" parameterType="java.util.HashMap">
+
+	INSERT INTO BOARD_COMMENT
+	(
+ 		bno
+	    , rno
+	    , content
+	    , writer
+	    , regdate
+	    )
+	  
+	    VALUES
+	    (
+	    #{board_no}
+	    ,BOARD_COMMENT_SEQ.NEXTVAL
+	    ,#{content}
+	    ,#{writer}
+	    ,SYSDATE
+	    )
+
+
+</insert>
+
+
+</mapper>
