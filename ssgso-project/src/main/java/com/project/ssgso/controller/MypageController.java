@@ -86,11 +86,12 @@ public class MypageController {
 		HashMap<String, String> XYMap = ssgsoServiceImpl.getXYMapfromJson(jsonString);
 		paramMap.put("latitude", XYMap.get("y"));
 		paramMap.put("longitude", XYMap.get("x"));
-		paramMap.put("id", (String) session.getAttribute("memberId"));
+		paramMap.put("mem_no", session.getAttribute("memberNo").toString());
 		
 		
 		System.out.println("paramMap::after = " + paramMap);
 		System.out.println("category = " + paramMap.get("category"));
+		
 		ssgsoServiceImpl.createAccomodation(paramMap);
 
 		System.out.println("createAccomodation 완료!!!!!");
