@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.ssgso.dto.AccomodationDto;
+import com.project.ssgso.dto.CategoryDto;
 import com.project.ssgso.dto.RoomDto;
 import com.project.ssgso.service.SsgsoServiceImpl;
 
@@ -22,6 +23,11 @@ public class MypageController {
 	
 	@Autowired
 	private SsgsoServiceImpl ssgsoServiceImpl; 
+	
+	@RequestMapping(value="/mypage/map")
+	public String getMap() {
+		return "mypage/map";
+	}
 	
 	@RequestMapping(value="/mypage/myReservation")
 	public String myReservation() {
@@ -58,14 +64,23 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value="/mypage/mySsgsoWrite")
-	public String mySsgsoWrite() {
+	public String mySsgsoWrite(Model model) {
+		
+		List <CategoryDto> categoryDtoList = ssgsoServiceImpl.selectCategoryAllList();
+		model.addAttribute("list", categoryDtoList);
+		
 		return "mypage/mySsgsoWrite";
 	}
 	
+
 	@RequestMapping(value="/mypage/mySsgsoCreate")
-	public String ssgsoCreate(@RequestParam HashMap<String, String> paramMap, HttpSession session) {
+	public String ssgsoCreate(@RequestParam HashMap<String, String> paramMap, HttpSession session, Model model) {
+		System.out.println("paramMap::before = " + paramMap);
+		
 		String roadFullAddr = paramMap.get("roadFullAddr");
 		String jsonString =  ssgsoServiceImpl.getKakaoApiFromAddress(roadFullAddr);
+		
+		System.out.println(paramMap.get("roadFullAddr"));
 		
 		// x = 경도(longitude), y = 위도(latitude)
 		HashMap<String, String> XYMap = ssgsoServiceImpl.getXYMapfromJson(jsonString);
@@ -74,9 +89,13 @@ public class MypageController {
 		paramMap.put("id", (String) session.getAttribute("memberId"));
 		
 		
-		//System.out.println("paramMap::after = " + paramMap);
+		System.out.println("paramMap::after = " + paramMap);
+		System.out.println("category = " + paramMap.get("category"));
 		ssgsoServiceImpl.createAccomodation(paramMap);
-		
-		return "redirect:/ssgso/ssgsoThemeRecommend";
+
+		System.out.println("createAccomodation 완료!!!!!");
+		model.addAttribute("name", paramMap.get("name"));
+		model.addAttribute("roadFullAddr", roadFullAddr);
+		return "mypage/ssgsoHashtagWrite";
 	}
 }

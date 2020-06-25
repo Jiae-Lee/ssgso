@@ -11,8 +11,6 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,12 +20,11 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.ssgso.dao.SsgsoDaoImpl;
 import com.project.ssgso.dto.AccomodationDto;
+import com.project.ssgso.dto.CategoryDto;
 import com.project.ssgso.dto.RoomDto;
 
 @Service
 public class SsgsoServiceImpl implements ISsgsoService{
-	
-	private static final String HttpEntity = null;
 	@Autowired
 	public SsgsoDaoImpl ssgsoDaoImpl;
 
@@ -45,6 +42,13 @@ public class SsgsoServiceImpl implements ISsgsoService{
 	public List<RoomDto> selectRoomAllList() {
 		return ssgsoDaoImpl.selectRoomAllList();
 	}
+	
+
+	@Override
+	public List<CategoryDto> selectCategoryAllList() {
+		return ssgsoDaoImpl.selectCategoryAllList();
+	}
+	
 
 	@Override
 	public void createAccomodation(HashMap<String, String> paramMap) {
@@ -115,4 +119,10 @@ public class SsgsoServiceImpl implements ISsgsoService{
 		}
 		return XYMap;
 	}
+
+	@Override
+	public int getAcnoUsingName(String name) {
+		return ssgsoDaoImpl.getAcnoUsingName(name);
+	}
+
 }

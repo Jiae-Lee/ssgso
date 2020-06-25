@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="hashtagMapper">	
+		<insert id="insertHashtag" parameterType="java.util.Map">
+			INSERT into HASHTAG(HASH_NO,AC_NO,HASH_VAL)
+			SELECT seq_hash.NEXTVAL, A.* FROM(
+			 <foreach item="item" collection="list" separator="UNION ALL " >
+			   select #{item.ac_no} as AC_NO,
+			          #{item.hash_val} as HASH_VAL
+			   from dual
+			 </foreach>) A
+		</insert>	
+	</mapper>

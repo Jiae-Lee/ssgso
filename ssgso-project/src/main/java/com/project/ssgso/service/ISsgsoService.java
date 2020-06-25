@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.project.ssgso.dto.AccomodationDto;
+import com.project.ssgso.dto.CategoryDto;
 import com.project.ssgso.dto.RoomDto;
 
 public interface ISsgsoService {
@@ -21,4 +22,8 @@ public interface ISsgsoService {
 	
 	public String getKakaoApiFromAddress(String roadFullAddr);
 	public HashMap<String, String> getXYMapfromJson(String jsonString);
+	
+	public List<CategoryDto> selectCategoryAllList();
+	
+	public int getAcnoUsingName(String name);
 }

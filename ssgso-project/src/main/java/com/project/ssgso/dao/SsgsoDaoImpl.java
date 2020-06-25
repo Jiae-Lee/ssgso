@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.project.ssgso.dto.AccomodationDto;
+import com.project.ssgso.dto.CategoryDto;
 import com.project.ssgso.dto.RoomDto;
 
 @Repository
@@ -48,8 +49,21 @@ public class SsgsoDaoImpl implements ISsgsoDao{
 
 	@Override
 	public void createAccomodation(HashMap<String, String> paramMap) {
-		System.out.println("DaoImpl::" + paramMap);
-		sqlSession.insert("ssgsoMapper.createAccomodation", paramMap);
+		System.out.println("createAccomodationDaoImpl::" + paramMap);
+		sqlSession.insert("ssgsoMapper.createAccomodation", paramMap);		
+	}
+
+	@Override
+	public List<CategoryDto> selectCategoryAllList() {
+		List<CategoryDto> categoryDtoList = new ArrayList<CategoryDto>();
+		categoryDtoList = sqlSession.selectList("ssgsoMapper.selectCategoryAllList");
 		
+		return categoryDtoList;
+	}
+
+	@Override
+	public int getAcnoUsingName(String name) {
+		int ac_no = sqlSession.selectOne("ssgsoMapper.getAcnoUsingName", name);
+		return ac_no;
 	}
 }

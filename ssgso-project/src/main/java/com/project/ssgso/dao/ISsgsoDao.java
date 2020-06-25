@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.project.ssgso.dto.AccomodationDto;
+import com.project.ssgso.dto.CategoryDto;
 import com.project.ssgso.dto.RoomDto;
 
 public interface ISsgsoDao {
@@ -18,5 +19,6 @@ public interface ISsgsoDao {
 	public List<RoomDto> selectRoomAllList(); 
 	
 	public void createAccomodation(HashMap<String, String> paramMap);
-
+	public List<CategoryDto> selectCategoryAllList();
+	public int getAcnoUsingName(String name);
 }
