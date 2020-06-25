@@ -77,16 +77,12 @@
 									</div>
 									<div class="col-lg-12 col-xl-3">
 										<div class="select-wrap">
-											<span class="icon"><span
-												class="icon-keyboard_arrow_down"></span></span> <select
-												class="form-control" name="" id="">
-												<option value="">All Categories</option>
-												<option value="">브라이덜샤워</option>
-												<option value="">커플</option>
-												<option value="">혼자여행</option>
-												<option value="">이벤트</option>
-												<option value="">파티룸</option>
-												<option value="">Others</option>
+											<span class="icon"><span class="icon-keyboard_arrow_down"></span></span> 
+											<select class="form-control" name="" id="">
+												<option value="all">All Categories</option>
+									            <c:forEach var="cat" items="${list}">
+									                <option value="${cat.cat_val}">${cat.cat_val}</option>
+									            </c:forEach>
 											</select>
 										</div>
 									</div>

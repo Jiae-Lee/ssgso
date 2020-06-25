@@ -29,7 +29,7 @@ public class MemberServiceImpl implements IMemberService {
 		if (result) { // true일 경우 세션에 등록
 			MemberDto memberDto2 = viewMember(memberDto);
 			// 세션 변수 등록
-			session.setAttribute("memberId", memberDto2.getMem_no());
+			session.setAttribute("memberNo", memberDto2.getMem_no());
 			System.out.println("memno"+memberDto2.getMem_no());
 			
 			session.setAttribute("memberId", memberDto2.getMember_id());
