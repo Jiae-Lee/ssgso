@@ -112,6 +112,18 @@ table.list {
 							<td><input type="text" name="info"></td>
 						</tr>
 						<tr>
+							<th>카테고리</th>
+							<td>
+								<select name="category">
+						            <c:forEach var="cat" items="${list}">
+						                <option value="${cat.cat_val}">${cat.cat_val}</option>
+						            </c:forEach>
+						        </select>
+							</td>
+						</tr>
+						
+						
+						<tr>
 							<td colspan="2">
 								<input type="submit" value="등록" id="addbutton">
 								<input type="reset" value="초기화" id="resetbutton">

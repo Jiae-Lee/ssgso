@@ -29,12 +29,24 @@
 		ORDER BY ROOM_NO ASC
 	</select>
 	
+	<select id="selectCategoryAllList" resultType="com.project.ssgso.dto.CategoryDto">
+		SELECT CAT_NO, CAT_VAL
+		FROM CATEGORY
+		ORDER BY CAT_NO ASC
+	</select>
+	
 	<!-- create accomodation -->
 	<insert id="createAccomodation" parameterType="java.util.HashMap">
 		INSERT INTO ACCOMODATION
-		(AC_NO, NAME, INFO, AC_IMG, LATITUDE, LONGITUDE, ADDRESS, AC_PHONE, AC_ACCOUNT, AC_PRICE, ID) 
-		VALUES(SEQ_ACC.NEXTVAL, #{name}, #{info}, #{ac_img}, #{latitude}, #{longitude}, #{roadFullAddr}, #{ac_phone}, #{ac_account}, #{ac_price}, #{id})
+		(AC_NO, NAME, INFO, AC_IMG, LATITUDE, LONGITUDE, ADDRESS, AC_PHONE, AC_ACCOUNT, AC_PRICE, ID, CATEGORY) 
+		VALUES(SEQ_ACC.NEXTVAL, #{name}, #{info}, #{ac_img}, #{latitude}, #{longitude}, 
+		#{roadFullAddr}, #{ac_phone}, #{ac_account}, #{ac_price}, #{id}, #{category})
 		
 	</insert>
+	
+	<select id="getAcnoUsingName" resultType="int" parameterType="String">
+		SELECT AC_NO FROM ACCOMODATION
+		WHERE NAME = #{name}
+	</select>
 	
 	</mapper>
