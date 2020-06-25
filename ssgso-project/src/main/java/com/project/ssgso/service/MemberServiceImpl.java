@@ -29,16 +29,22 @@ public class MemberServiceImpl implements IMemberService {
 		if (result) { // true일 경우 세션에 등록
 			MemberDto memberDto2 = viewMember(memberDto);
 			// 세션 변수 등록
+			session.setAttribute("memberId", memberDto2.getMem_no());
+			System.out.println("memno"+memberDto2.getMem_no());
+			
 			session.setAttribute("memberId", memberDto2.getMember_id());
-			System.out.println("서비스"+memberDto2.getMember_id());
+			System.out.println("서비스id"+memberDto2.getMember_id());
 			session.setAttribute("memberName", memberDto2.getName());
-			System.out.println("서비스"+memberDto2.getName());
+			System.out.println("서비스no"+memberDto2.getName());
+			session.setAttribute("memberGrade", memberDto2.getGrade());
+			System.out.println("서비스grade"+memberDto2.getGrade());
+			
 			session.setAttribute("memberEmail", memberDto2.getEmail());
-			System.out.println("서비스"+memberDto2.getEmail());
+			System.out.println("서비스email"+memberDto2.getEmail());
 			session.setAttribute("memberCorporate_no", memberDto2.getCorporate_no());
 			System.out.println("서비스"+memberDto2.getCorporate_no());
 			session.setAttribute("memberGender", memberDto2.getGender());
-			System.out.println("서비스"+memberDto2.getGender());
+			System.out.println("서비스gender"+memberDto2.getGender());
 			session.setAttribute("memberCreate_date", memberDto2.getCreate_date());
 			System.out.println("서비스"+memberDto2.getCreate_date());
 		}
