@@ -28,6 +28,8 @@
       </nav>
    </header>
    <section>
+     
+     
       <div id="content">
          <form action="insertBoardFree" method="post">
 
@@ -47,6 +49,8 @@
       		<a href="<%=contextPath%>/board/boardFree">취소</a> 
       
       </div>
+  
+  
    </section>
    
    <footer>
