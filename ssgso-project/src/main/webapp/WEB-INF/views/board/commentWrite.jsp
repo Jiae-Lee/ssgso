@@ -11,10 +11,23 @@
 	<form action="insertComment" method="post">
 		<input type="hidden" id="rno" name="rno" value="${CommentDto.rno}">
 		<input type="hidden" id="board_no" name="board_no" value="${board_no}">
-		댓글 작성자 : <input type="text" name="writer" /><br> 댓글 내용
-		<textarea rows="4" cols="100" name="content"></textarea>
 
-		<input type="submit" value="댓글달기">
+		<table>
+			<tr>
+				<td>작성자</td>
+				<td><input type="text" name="writer"
+/></td>
+			</tr>
+			<tr>
+				<td>댓글내용</td>
+				<td><textarea rows="4" cols="100" name="content"></textarea></td>
+				<td rowspan="2"><input type="submit" value="댓글달기"></td>
+			</tr>
+
+		</table>
+
+
+		
 	</form>
 
 

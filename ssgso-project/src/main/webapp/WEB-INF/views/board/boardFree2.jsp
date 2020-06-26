@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자유게시판</title>
+<title>About</title>
 <link rel="shortcut icon" type="image/x-icon" href="<c:url value="/images/favicon.ico"/>">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
@@ -25,56 +25,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/aos.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/rangeslider.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
-<style>
-table.list {
-	width: 100%;
-	border-collapse: collapse;
-	text-align: left;
-	line-height: 1.5;
-	margin: 10px 0;
-}
-
-.list th {
-	text-align: center;
-	background: #DA9ADA;
-	color: #fff;
-}
-
-.list_no {
-	width: 10%;
-	text-align: center;
-	
-}
-
-.list_title {
-	width: 60%;
-	padding-left: 10px;
-	color: #000;
-}
-
-.list_date {
-	width: 20%;
-	text-align: center;
-}
-
-.list_count {
-	width: 10%;
-	text-align: center;
-}
-
-.writebutton {
-	float: right;
-}
-</style>
-<script>
-	$(document).ready(function() {
-		$("tr:even").css("background-color", "#dedcee");
-		$("tr:odd").css("background-color", "white");
-		$("tr:first").css("background-color", "#6a60a9");
-		$("tr:first").css("color", "white");
-	});
-</script>
-
 </head>
 <body>
 
@@ -94,22 +44,8 @@ table.list {
 			<jsp:include page="../include/menu.jsp" />
     </header>
 
-    <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(../resources/images/js4.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
-      <div class="container">
-        <div class="row align-items-center justify-content-center text-center">
-          <div class="col-md-10">
-            <div class="row justify-content-center">
-              <div class="col-md-8 text-center">
-                <h1 data-aos="fade-up">커뮤니티</h1>
-                <p class="mb-0" data-aos="fade-up" data-aos-delay="100">자유게시판!</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    	<div id="content">
 
+<div id="content">
 	         
 			<table class="list">
 				<c:choose>
@@ -135,8 +71,17 @@ table.list {
 			<form action="<%=contextPath%>/board/boardFreeWrite" method="post" class="writebutton">
 				<input type="submit" value="글쓰기">
 			</form>
-		
 		</div>
+
+
+		<form action="<%=contextPath%>/board/boardFreeWrite" method="post">
+		<input type="submit" value="글쓰기">
+	</form>
+      
+      
+      </div>
+
+
 
 	<!-- footer -->
 	<footer class="site-footer">
