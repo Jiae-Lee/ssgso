@@ -13,6 +13,22 @@
 		ORDER BY AC_NO ASC
 	</select>
 	
+	<select id="selectAccListUsingCategory" parameterType="String" resultType="com.project.ssgso.dto.AccomodationDto">
+		SELECT AC_NO, NAME, INFO, AC_IMG, ADDRESS, AC_PHONE, AC_PRICE, CATEGORY, MEM_NO, 
+			TO_CHAR(LATITUDE, 'FM990.000000') AS latitude, TO_CHAR(LONGITUDE, 'FM990.000000') AS longitude 
+		FROM ACCOMODATION
+		WHERE CATEGORY = #{category}
+		ORDER BY AC_NO ASC
+	</select>
+	
+	
+	<select id="selectHashListUsingAcno" parameterType="int" resultType="com.project.ssgso.dto.HashtagDto">
+		SELECT HASH_NO, AC_NO, HASH_VAL
+		FROM HASHTAG
+		WHERE AC_NO = #{AC_NO}
+		ORDER BY HASH_NO ASC
+	</select>
+	
 	<!-- 숙소 상세 조회  -->
 	<select id="selectAccomodation" parameterType="int" resultType="com.project.ssgso.dto.AccomodationDto">
 		SELECT AC_NO, NAME, INFO, AC_IMG, ADDRESS, AC_PHONE, AC_PRICE, CATEGORY, MEM_NO, 

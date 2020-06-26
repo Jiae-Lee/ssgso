@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
-	String contextPath = request.getContextPath();
+   String contextPath = request.getContextPath();
 %>
 <html>
   <head>
@@ -37,7 +37,7 @@
     </div>
     
     <header class="site-navbar py-2 bg-white" role="banner">
-			<jsp:include page="../include/menu.jsp" />
+         <jsp:include page="../include/menu.jsp" />
     </header>
 
     <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(<c:url value="/images/js2.jpg"/>);" data-aos="fade" data-stellar-background-ratio="0.5">
@@ -55,45 +55,45 @@
       </div>
     </div>  
     
-	<!-- 숙소리스트 -->
+   <!-- 숙소리스트 -->
     <div class="site-section">
       <div class="container">
+      <div class="col-lg-12 col-xl-2 ml-auto text-right">
+            <form action="<%=contextPath%>/search/map" method="post">
+               <input type="submit" class="btn btn-primary" value="지도">
+               <input type="hidden" name="location" value="${searchMap['location']}" />
+            </form>
+         </div>
         <div class="row">
         
-			<!-- 숙소 목록 -->
-			<div class="col-lg-12 col-xl-2 ml-auto text-right">
-				<form action="<%=contextPath%>/search/map" method="post">
-					<input type="submit" class="btn btn-primary" value="지도">
-					<input type="hidden" name="location" value="${searchMap['location']}" />
-				</form>
-			</div>
-			
+         <!-- 숙소 목록 -->
+         
           <div class="col-lg-8">
-			<c:choose>
-				<c:when test="${fn:length(list)>0}">
-					<c:forEach items="${list}" var="dto">
-			            <div class="d-block d-md-flex listing-horizontal">
-			              <a href="#" class="img d-block" style="background-image: url('../resources/images/img_2.jpg')">
-			                <span class="category">호텔</span>
-			              </a>
-			              <div class="lh-content">
-			                <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-			                <h3><a href="<%=contextPath%>/ssgso/ssgsoRankingView?ac_no=${dto.ac_no}">${dto.name}</a></h3>
-			                <p>${dto.address}</p>
-			                <p>
-			                  <span class="icon-star text-warning"></span>
-			                  <span class="icon-star text-warning"></span>
-			                  <span class="icon-star text-warning"></span>
-			                  <span class="icon-star text-warning"></span>
-			                  <span class="icon-star text-warning"></span>
-			                  <span>(42 Reviews)</span>
-			                </p>          
-			              </div>
-			            </div>
-					</c:forEach>
-				</c:when>	
-			</c:choose>
-			
+         <c:choose>
+            <c:when test="${fn:length(list)>0}">
+               <c:forEach items="${list}" var="dto">
+                     <div class="d-block d-md-flex listing-horizontal">
+                       <a href="#" class="img d-block" style="background-image: url('../resources/images/img_2.jpg')">
+                         <span class="category">호텔</span>
+                       </a>
+                       <div class="lh-content">
+                         <a href="#" class="bookmark"><span class="icon-heart"></span></a>
+                         <h3><a href="<%=contextPath%>/ssgso/ssgsoRankingView?ac_no=${dto.ac_no}">${dto.name}</a></h3>
+                         <p>${dto.address}</p>
+                         <p>
+                           <span class="icon-star text-warning"></span>
+                           <span class="icon-star text-warning"></span>
+                           <span class="icon-star text-warning"></span>
+                           <span class="icon-star text-warning"></span>
+                           <span class="icon-star text-warning"></span>
+                           <span>(42 Reviews)</span>
+                         </p>          
+                       </div>
+                     </div>
+               </c:forEach>
+            </c:when>   
+         </c:choose>
+         
 <!-- 
             <div class="d-block d-md-flex listing-horizontal">
               <a href="#" class="img d-block" style="background-image: url('images/img_1.jpg')">
@@ -288,24 +288,24 @@
       </div>
     </div><!-- end : 숙소리스트 -->
 
+    <footer class="site-footer">
+      <jsp:include page="../include/footer.jsp" />
+    </footer>
   </div>
 
-    <footer class="site-footer">
-		<jsp:include page="../include/footer.jsp" />
-    </footer>
-    
-	<script src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>"></script>
-	<script	src="<c:url value="/resources/js/jquery-migrate-3.0.1.min.js"/>"></script>
-	<script src="<c:url value="/resources/js/jquery-ui.js"/>"></script>
-	<script src="<c:url value="/resources/js/popper.min.js"/>"></script>
-	<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
-	<script src="<c:url value="/resources/js/owl.carousel.min.js"/>"></script>
-	<script src="<c:url value="/resources/js/jquery.stellar.min.js"/>"></script>
-	<script src="<c:url value="/resources/js/jquery.countdown.min.js"/>"></script>
-	<script	src="<c:url value="/resources/js/jquery.magnific-popup.min.js"/>"></script>
-	<script	src="<c:url value="/resources/js/bootstrap-datepicker.min.js"/>"></script>
-	<script src="<c:url value="/resources/js/aos.js"/>"></script>
-	<script src="<c:url value="/resources/js/rangeslider.min.js"/>"></script>
-	<script src="<c:url value="/resources/js/main.js"/>"></script>
+
+   <script src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>"></script>
+   <script   src="<c:url value="/resources/js/jquery-migrate-3.0.1.min.js"/>"></script>
+   <script src="<c:url value="/resources/js/jquery-ui.js"/>"></script>
+   <script src="<c:url value="/resources/js/popper.min.js"/>"></script>
+   <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
+   <script src="<c:url value="/resources/js/owl.carousel.min.js"/>"></script>
+   <script src="<c:url value="/resources/js/jquery.stellar.min.js"/>"></script>
+   <script src="<c:url value="/resources/js/jquery.countdown.min.js"/>"></script>
+   <script   src="<c:url value="/resources/js/jquery.magnific-popup.min.js"/>"></script>
+   <script   src="<c:url value="/resources/js/bootstrap-datepicker.min.js"/>"></script>
+   <script src="<c:url value="/resources/js/aos.js"/>"></script>
+   <script src="<c:url value="/resources/js/rangeslider.min.js"/>"></script>
+   <script src="<c:url value="/resources/js/main.js"/>"></script>
   </body>
 </html>
