@@ -76,7 +76,7 @@ public class MypageController {
 	@RequestMapping(value="/mypage/mySsgsoCreate")
 	public String ssgsoCreate(@RequestParam HashMap<String, String> paramMap, HttpSession session, Model model) {
 		System.out.println("paramMap::before = " + paramMap);
-		System.out.println("memNo = " + session.getAttribute("memberNo").toString());
+		System.out.println("memNo = " + session.getAttribute("memberNo"));
 		
 		String roadFullAddr = paramMap.get("roadFullAddr");
 		String jsonString =  ssgsoServiceImpl.getKakaoApiFromAddress(roadFullAddr);

@@ -73,8 +73,8 @@
             <c:when test="${fn:length(list)>0}">
                <c:forEach items="${list}" var="dto">
                      <div class="d-block d-md-flex listing-horizontal">
-                       <a href="#" class="img d-block" style="background-image: url('../resources/images/img_2.jpg')">
-                         <span class="category">호텔</span>
+                       <a href="<%=contextPath%>/ssgso/ssgsoRankingView?ac_no=${dto.ac_no}" class="img d-block" style="background-image: url('${dto.ac_img}')">
+                         <span class="category">${dto.category}</span>
                        </a>
                        <div class="lh-content">
                          <a href="#" class="bookmark"><span class="icon-heart"></span></a>
