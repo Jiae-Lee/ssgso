@@ -35,6 +35,8 @@
    </header>
    <section>
 		<div id="content">
+		<form action="<%=contextPath%>/ssgso/reservation">
+			<input type="hidden" name="ac_no" value="${AccomodationDto.ac_no}">
 			<div id="accwrap">
 				<div class="accimg">
 				 ${AccomodationDto.ac_img}
@@ -49,6 +51,7 @@
 					
 					<div class="accprice">
 						<h3>가격</h3>
+						￦　${AccomodationDto.ac_price}원
 						<!-- accomodation과 room 테이블을 join해서 가격 가져오기  -->
 					</div>    
 						
@@ -67,7 +70,8 @@
 			<div id="roomwrap">
 				방정보가 들어갈 부분입니다
 			</div><!-- end : accWrap -->			
-			<a href="<%=contextPath%>/ssgso/reservation"/>예약하기</a>		  
+			<input type="submit" value="예약하기">
+		</form>	  
 		</div>
    </section>
     <footer>

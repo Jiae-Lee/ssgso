@@ -28,17 +28,18 @@
     <section>
       <div id="content">
          <form action="<%=contextPath%>/ssgso/payment" method="post">
+         <input type="hidden" name="ac_no" value="${AccomodationDto.ac_no}">
 			<table border="1px">
 				<tr>
 					<th colspan="2">날짜 및 인원 선택</th>
 				</tr>
 				<tr>
 					<td>체크인</td>
-					<td><input type="date" name="checkin"></td>
+					<td><input type="date" name="date_from"></td>
 				</tr>
 				<tr>
 					<td>체크아웃</td>
-					<td><input type="date" name="checkout"></td>
+					<td><input type="date" name="date_to"></td>
 				</tr>
 				<tr>
 					<td>인원</td>
@@ -60,7 +61,7 @@
 				</tr>
 				<tr>
 					<td colsapn="2">
-						<input type="submit" value="예약하기">
+						<input type="submit" value="선택완료">
 					</td>
 				</tr>
 			</table>

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.project.ssgso.dto.AccomodationDto;
+import com.project.ssgso.dto.BookingDto;
 import com.project.ssgso.dto.CategoryDto;
 import com.project.ssgso.dto.RoomDto;
 
@@ -26,4 +27,9 @@ public interface ISsgsoService {
 	public List<CategoryDto> selectCategoryAllList();
 	
 	public int getAcnoUsingName(String name);
+	
+	
+	
+	// 예약 추가
+	public void insertBooking(HashMap<String, String> paramMap);
 }

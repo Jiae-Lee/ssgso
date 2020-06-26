@@ -21,4 +21,8 @@ public interface ISsgsoDao {
 	public void createAccomodation(HashMap<String, String> paramMap);
 	public List<CategoryDto> selectCategoryAllList();
 	public int getAcnoUsingName(String name);
+	
+	
+	//////////예약 등록 추가///////////
+	public void insertBooking(HashMap<String, String> paramMap);
 }

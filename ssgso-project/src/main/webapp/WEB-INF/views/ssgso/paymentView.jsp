@@ -25,15 +25,28 @@
          <jsp:include page="../include/menu.jsp" />
       </nav>
    </header>
-   <section>
-	<div id="content">
-    	결제가 완료 되었습니다.
-   		<br>
-   		<a href="<%=contextPath%>/index">메인 화면 | </a>
-   		<a href="<%=contextPath%>/ssgso//reservationView">예약 내역</a>
-	</div>
-   </section>
-   <footer>
+	<section>
+		<div id="content">
+			<h2>예약이 완료 되었습니다.</h2>
+			<br>
+			<table border="1">
+				<tr>
+					<th>예약 내역</th>
+				</tr>
+				<tr>
+					<td> 구매자 : ${sessionScope.memberName}<br> 
+						   방 이름 : ${AccomodationDto.name} <br> 
+						   날짜 : ${date_from}~${date_to} <br>
+						   인원 : ${person} <br>
+						   결제금액 : ${AccomodationDto.ac_price}<br>
+					</td>
+				</tr>
+			</table>
+			<br> 
+			<a href="<%=contextPath%>/index">[메인 화면]</a>
+		</div>
+	</section>
+	<footer>
       <jsp:include page="../include/footer.jsp" />
    </footer>
 </body>
