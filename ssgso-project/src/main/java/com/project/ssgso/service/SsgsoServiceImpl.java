@@ -125,6 +125,14 @@ public class SsgsoServiceImpl implements ISsgsoService{
 	public int getAcnoUsingName(String name) {
 		return ssgsoDaoImpl.getAcnoUsingName(name);
 	}
+	
+	
+	
+	//////////예약 등록 추가///////////
+	@Override
+	public void insertBooking(HashMap<String, String> paramMap) {
+		ssgsoDaoImpl.insertBooking(paramMap);
+	}
 
 	@Override
 	public List<AccomodationDto> selectAccListUsingCategory(String category) {

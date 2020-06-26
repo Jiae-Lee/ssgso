@@ -64,7 +64,13 @@ public class SsgsoDaoImpl implements ISsgsoDao{
 		int ac_no = sqlSession.selectOne("ssgsoMapper.getAcnoUsingName", name);
 		return ac_no;
 	}
-
+  
+	///////// 예약 등록 추가 //////////
+	@Override
+	public void insertBooking(HashMap<String, String> paramMap) {
+		sqlSession.insert("ssgsoMapper.insertBooking", paramMap);	
+  }
+  
 	@Override
 	public List<AccomodationDto> selectAccListUsingCategory(String category) {
 		List<AccomodationDto> AccomodationDtoList = 

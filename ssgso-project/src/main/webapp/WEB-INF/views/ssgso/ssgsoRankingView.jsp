@@ -56,6 +56,8 @@
     </div>  
         
     <div class="site-section">
+    <form action="<%=contextPath%>/ssgso/reservation">
+         <input type="hidden" name="ac_no" value="${AccomodationDto.ac_no}">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md-6">
@@ -66,17 +68,11 @@
             <h5>&nbsp; 정보</h5>
             <p>${AccomodationDto.info}</p>
             <p class="mb-4">
-			<c:choose>
-				<c:when test="${fn:length(hashlist)>0}">
-					<c:forEach items="${hashlist}" var="dto">
-			                <span class="text-warning">${dto.hash_val}&nbsp;</span>
-					</c:forEach>
-				</c:when>	
-			</c:choose>
+            	두번째문단 더 넣을 정보
             </p>
 
             <ul class="ul-check list-unstyled success">
-              <li>가격 : ${RoomDto.price}</li>
+              <li>가격 : ${AccomodationDto.ac_price}</li>
               <li>주소 : ${AccomodationDto.address}</li>
             </ul>
           </div>
@@ -86,6 +82,7 @@
 			<input type="button" value="예약하기" onClick="window.open('../ssgso/reservation')" class="btn btn-primary py-2 px-4 text-white btn-md font-weight-bold">
 		</div>
       </div>
+      </form>
     </div>
     
 

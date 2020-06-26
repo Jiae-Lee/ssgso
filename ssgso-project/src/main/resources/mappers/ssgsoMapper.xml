@@ -64,4 +64,17 @@
 		WHERE NAME = #{name}
 	</select>
 	
+	
+	<!-- 예약 등록 -->
+	<insert id="insertBooking" parameterType="java.util.HashMap">
+		INSERT INTO booking 
+		( book_no, mem_no, date_from, date_to, room_no ) 
+		VALUES 
+		( BOOKING_SEQ.NEXTVAL, #{memNo}, #{date_from}, #{date_to}, #{ac_no} )
+			<selectKey keyProperty="bookNo" resultType="Integer" order="AFTER">
+				SELECT BOOKING_SEQ.currval as bookNo FROM dual
+			</selectKey>
+	</insert>
+	
+	
 	</mapper>
