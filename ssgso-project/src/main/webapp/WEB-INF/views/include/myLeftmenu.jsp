@@ -17,8 +17,8 @@
 		</c:when>
 
 		<c:when test="${sessionScope.memberGrade==1}">
-			<li><a href="<%=contextPath%>/mypage/myReservation">예약내역</a></li>
 			<li><a href="<%=contextPath%>/mypage/myInfo">개인정보수정</a></li>
+			<li><a href="<%=contextPath%>/mypage/myReservation">예약내역</a></li>
 		</c:when>
 		
 		<c:when test="${sessionScope.memberGrade==2}">

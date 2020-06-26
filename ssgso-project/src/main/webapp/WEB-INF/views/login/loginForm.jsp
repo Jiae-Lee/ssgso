@@ -1,19 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmf" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%-- JSTL Core --%>
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%-- JSTL Function --%>
 <%
-	String contextPath = request.getContextPath();
+   String contextPath = request.getContextPath();
 %>
-<%--로그인 폼 화면 --%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
+<link rel="shortcut icon" type="image/x-icon" href="<c:url value="/images/favicon.ico"/>">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/icomoon/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/magnific-popup.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/aos.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/rangeslider.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 
@@ -82,55 +92,99 @@
 		return unescape(cookieValue);
 	}
 </script>
-<style>
-body {
-	text-align: center;
-}
-
-table {
-	margin: auto;
-}
-</style>
 </head>
 <body>
-<h1>로그인</h1>
-	<form action="<%=contextPath%>/login/loginCheck.do" method="get">
-		<table>
-			<tr>
-				<td>아이디</td>
-				<td><input type="text" id="member_id" name="member_id" size="20" maxlength="12"
-					required></td>
-				<td><input type="checkbox" id="idSaveCheck">아이디 저장</td>
-			</tr>
-			<tr>
-				<td>패스워드</td>
-				<td><input type="password" id="password" name="password" size="20"
-					maxlength="12" required>
-					<c:if test="${msg == 'failure'}">
-						<div style="color: red">
-						아이디 또는 비밀번호가 일치하지 않습니다.
-						</div>
-					</c:if>
-					<c:if test="${msg == 'logout'}">
-						<div style="color:red">
-							로그아웃 되었습니다.
-						</div>
-					</c:if>
-				</td>
-				<td><input type="submit" value="로그인"></td>
-					
-			</tr>
-			<tr>
-				<td colspan="2"><a href="<%=contextPath%>/login/searchId">아이디 찾기ㅣ</a>
-					&nbsp; &nbsp;
-					<a href="<%=contextPath%>/login/searchPw">비밀번호 찾기ㅣ</a> 
-					&nbsp; &nbsp;	
-					<a href="<%=contextPath%>/join/joinHome">회원가입</a>
-				</td>
-			</tr>
-			
-		</table>
-	</form>
-<a href="<%=contextPath%>/index">[인덱스]</a>
+
+  
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    
+    <header class="site-navbar py-2 bg-white" role="banner">
+			<jsp:include page="../include/menu.jsp" />
+    </header>
+    
+    <div class="site-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center border-primary">
+            <h2 class="font-weight-light text-primary">Login</h2>
+            <p class="color-black-opacity-5">로그인을 진행해주세요</p>
+          </div>
+        </div>
+
+	
+	    <div class="row justify-content-center">
+	      <div>
+			 <form action="<%=contextPath%>/login/loginCheck.do" method="get">
+				<table>
+					<tr>
+						<td style="text-align:center;"><b>ID</b></td>
+						<td><input type="text" id="member_id" name="member_id" size="20" maxlength="12" required></td>
+						<td><input type="checkbox" id="idSaveCheck">아이디 저장</td>
+					</tr>
+					<tr>
+						<td style="text-align:center;"><b>PW</b></td>
+						<td>
+							<input type="password" id="password" name="password" size="20" maxlength="12" required>
+							<c:if test="${msg == 'failure'}">
+								<div style="color: red">
+								아이디 또는 비밀번호가 일치하지 않습니다.
+								</div>
+							</c:if>
+							<c:if test="${msg == 'logout'}">
+								<div style="color:red">
+									로그아웃 되었습니다.
+								</div>
+							</c:if>
+						</td>
+						<td style="text-align:center;">
+							<input type="submit" class="btn btn-primary py-2 px-4 text-white btn-md font-weight-bold" value="로그인">
+						</td>
+					</tr>
+					<tr style="text-align:center;">
+						<td>
+							<a href="<%=contextPath%>/login/searchId">아이디 찾기</a>
+						</td>
+						<td>
+							<a href="<%=contextPath%>/login/searchPw">비밀번호 찾기</a>
+						</td>
+						<td>
+							<a href="<%=contextPath%>/join/joinHome">회원가입</a>
+						</td>
+					</tr>
+				</table>
+			</form>
+	      </div>
+	    </div>
+
+     </div>
+   </div>
+	<!-- footer -->
+	<footer class="site-footer">
+		<jsp:include page="../include/footer.jsp" />
+	</footer>
+  </div>
+
+<script src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>"></script>
+<script	src="<c:url value="/resources/js/jquery-migrate-3.0.1.min.js"/>"></script>
+<script src="<c:url value="/resources/js/jquery-ui.js"/>"></script>
+<script src="<c:url value="/resources/js/popper.min.js"/>"></script>
+<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value="/resources/js/owl.carousel.min.js"/>"></script>
+<script src="<c:url value="/resources/js/jquery.stellar.min.js"/>"></script>
+<script src="<c:url value="/resources/js/jquery.countdown.min.js"/>"></script>
+<script	src="<c:url value="/resources/js/jquery.magnific-popup.min.js"/>"></script>
+<script	src="<c:url value="/resources/js/bootstrap-datepicker.min.js"/>"></script>
+<script src="<c:url value="/resources/js/aos.js"/>"></script>
+<script src="<c:url value="/resources/js/rangeslider.min.js"/>"></script>
+<script src="<c:url value="/resources/js/main.js"/>"></script>
 </body>
 </html>
