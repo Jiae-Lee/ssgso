@@ -7,13 +7,10 @@ public class AccomodationDto {
 	private String ac_img;
 	private Double latitude;
 	private Double longitude;
-	private String ac_phone;
-	private String ac_account;
-	private String ac_price;
-	private String mem_no;
+	private int ac_price;
 	private String category;
 	private String address;
-	private String id;
+	private int mem_no;
 	
 	public AccomodationDto() {
 		
@@ -116,12 +113,30 @@ public class AccomodationDto {
 		this.address = address;
 	}
 
-	public String getId() {
-		return id;
+	public int getMem_no() {
+		return mem_no;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setMem_no(int mem_no) {
+		this.mem_no = mem_no;
 	}
+
+	public int getAc_price() {
+		return ac_price;
+	}
+
+	public void setAc_price(int ac_price) {
+		this.ac_price = ac_price;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	
 
 }

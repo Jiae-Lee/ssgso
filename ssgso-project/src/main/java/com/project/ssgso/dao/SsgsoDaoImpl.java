@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.project.ssgso.dto.AccomodationDto;
 import com.project.ssgso.dto.CategoryDto;
+import com.project.ssgso.dto.HashtagDto;
 import com.project.ssgso.dto.RoomDto;
 
 @Repository
@@ -22,9 +23,6 @@ public class SsgsoDaoImpl implements ISsgsoDao{
 	public List<AccomodationDto> selectAccomodationAllList() {
 		List<AccomodationDto> AccomodationDtoList = 
 				new ArrayList <AccomodationDto>();
-		
-		System.out.println("-===== " + sqlSession.selectList("ssgsoMapper.selectAccomodationAllList"));
-		
 		AccomodationDtoList = sqlSession.selectList("ssgsoMapper.selectAccomodationAllList");
 		
 		return AccomodationDtoList;
@@ -66,12 +64,26 @@ public class SsgsoDaoImpl implements ISsgsoDao{
 		int ac_no = sqlSession.selectOne("ssgsoMapper.getAcnoUsingName", name);
 		return ac_no;
 	}
-	
-	
-	
+  
 	///////// 예약 등록 추가 //////////
 	@Override
 	public void insertBooking(HashMap<String, String> paramMap) {
 		sqlSession.insert("ssgsoMapper.insertBooking", paramMap);	
+  }
+  
+	@Override
+	public List<AccomodationDto> selectAccListUsingCategory(String category) {
+		List<AccomodationDto> AccomodationDtoList = 
+				new ArrayList <AccomodationDto>();
+		AccomodationDtoList = sqlSession.selectList("ssgsoMapper.selectAccListUsingCategory", category);
+		return AccomodationDtoList;
+	}
+
+	@Override
+	public List<HashtagDto> selectHashListUsingAcno(int ac_no) {
+		List<HashtagDto> HashtagDtoList = new ArrayList<HashtagDto>();
+		HashtagDtoList = sqlSession.selectList("ssgsoMapper.selectHashListUsingAcno", ac_no);
+		
+		return HashtagDtoList;
 	}
 }

@@ -1,6 +1,8 @@
 package com.project.ssgso.controller;
 
 import java.util.HashMap;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.ssgso.dto.AccomodationDto;
+import com.project.ssgso.dto.HashtagDto;
 import com.project.ssgso.dto.RoomDto;
 import com.project.ssgso.service.SsgsoServiceImpl;
 
@@ -48,6 +51,13 @@ public class SsgsoController {
 		
 		List <RoomDto> RoomDtoList =
 				ssgsoServiceImpl.selectRoomAllList();
+		
+		List <HashtagDto> hashtagDtoList = ssgsoServiceImpl.selectHashListUsingAcno(ac_no);
+		
+		System.out.println("hashtagDtoList " + hashtagDtoList);
+		
+		model.addAttribute("hashlist", hashtagDtoList);
+		
 		model.addAttribute("list",RoomDtoList);
 		return "ssgso/ssgsoRankingView";
 	}
@@ -72,9 +82,10 @@ public class SsgsoController {
 				ssgsoServiceImpl.selectAccomodation(ac_no);
 		model.addAttribute("AccomodationDto", AccomodationDto);
 		
-		List <RoomDto> RoomDtoList =
-				ssgsoServiceImpl.selectRoomAllList();
+		List <RoomDto> RoomDtoList = ssgsoServiceImpl.selectRoomAllList();
 		model.addAttribute("list",RoomDtoList);
+
+		
 		return "ssgso/ssgsoRankingView";
 	}
 	

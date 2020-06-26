@@ -2,19 +2,29 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmf" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%-- JSTL Core --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%-- JSTL Function --%>
 <%
 	String contextPath = request.getContextPath();
 %>
-<%-- 일반 회원가입 --%>
+<%-- 파트너 회원가입 --%>
 <!DOCTYPE html>
 <html>
-<head>
+<title>SSGSO</title>
+<meta charset="utf-8">
+<meta name="회원가입" content="회원가입 페이지 입니다">
+<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/icomoon/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/magnific-popup.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/aos.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/rangeslider.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 <script>
 
 $(function () {
@@ -86,7 +96,7 @@ $(function () {
 			alert("사업자번호는 10자입니다.");
 			return false;
 		}	
-		
+
 		// 비밀번호 자릿수 검사
 		if(pwd.length<4 || pwd.length>12 ){
 			alert("비밀번호는 4자리 이상 12자리 이하여야 합니다.");
@@ -113,59 +123,112 @@ $(function () {
 	
 })	
 </script>
-<style>
-body {
-	text-align: center;
-}
-
-table {
-	margin: auto;
-}
-</style>
 </head>
 <body>
-	<form action="<%=contextPath%>/join/joinSuccess" method="get">
-		<input type="hidden" name="grade" value="2"/>
-		<table>
-			<tr>
-				<td>아이디</td>
-				<td><input type="text" id="member_id" name="member_id" size="20" maxlength="12"
-					required></td>
-				<td><button class="idCheck" type="button" id="idCheck" value="N">중복확인</button></td>
-			</tr>
-			<tr>
-				<td>이름</td>
-				<td><input type="text" name="name" size="20" maxlength="10"
-					required></td>
-			</tr>
-			<tr>
-				<td>이메일</td>
-				<td><input type="text" id="email" name="email" size="20" maxlength="20" placeholder="ex) a@b.c"
-					required></td>
-			</tr>
-			<tr>
-				<td>사업자번호</td>
-				<td><input type="number" id="corporate_no" name="corporate_no" size="20" maxlength="10" placeholder="10자리수"
-					required></td>
-			</tr>
-			<tr>
-				<td>패스워드</td>
-				<td><input type="password" id="password" name="password" size="20"
-					maxlength="20" placeholder="4~12자리" required></td>
-			</tr>
-			<tr>
-				<td>패스워드 확인</td>
-				<td><input type="password" id="check" name="check" size="20"
-					maxlength="20" placeholder="4~12자리" required></td>
-			</tr>
-			<tr>
-				<td>성별</td>
-				<td><input type="radio" name="gender" value="M" checked>남자
-					<input type="radio" name="gender" value="W">여자</td>
-			</tr>
-		</table>
-		<input type="submit" id="submit" value="회원가입" disabled>
-		<input type="button" value="취소">
-	</form>
-</body>
+  
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    
+    <header class="site-navbar py-2 bg-white" role="banner">
+			<jsp:include page="../include/menu.jsp" />
+    </header>
+
+
+    <div class="site-section bg-light">
+      <div class="container">
+       <div class="row justify-content-center">
+          <div class="col-8">
+
+			<form action="<%=contextPath%>/join/joinSuccess" method="get" class="p-5 bg-white">
+				<input type="hidden" name="grade" value="2"/>
+					<div class="row form-group">
+					  <div class="col-md-12">
+					    <label class="text-black" for="member_id">ID</label>
+					    <input type="text" id="member_id" name="member_id" size="20" maxlength="12" class="form-control" required>
+					  </div>
+					  <div class="col-md-12">
+					    <button class="idCheck" type="button" id="idCheck" class="form-control" value="N" style="margin-top: 10px; float: right;">중복확인</button>
+					  </div>
+					</div>
+						
+					<div class="row form-group">
+					  <div class="col-md-12">
+					    <label class="text-black" for="name">이름</label>
+					    <input type="text" name="name" size="20" maxlength="10" class="form-control" required>
+					  </div>
+					</div>
+					
+					<div class="row form-group">
+					  <div class="col-md-12">
+					    <label class="text-black" for="email">Email</label>
+					    <input type="text" id="email" class="form-control" name="email" size="20" maxlength="20" placeholder="ex) a@b.com" required>
+					  </div>
+					</div>
+					
+					<div class="row form-group">
+					  <div class="col-md-12">
+					    <label class="text-black" for="email">사업자 번호</label>
+					    <input type="number" id="corporate_no" name="corporate_no" size="20" maxlength="10" placeholder="10자리수" class="form-control"required>
+					  </div>
+					</div>
+					
+					<div class="row form-group">
+					  <div class="col-md-12">
+					    <label class="text-black" for="password">패스워드</label>
+					    <input type="password" id="password" name="password" size="20" maxlength="12" placeholder="4~12자리" class="form-control" required>
+					  </div>
+					</div>
+					
+					<div class="row form-group">
+					  <div class="col-md-12">
+					    <label class="text-black" for="check">패스워드 확인</label>
+					    <input type="password" id="check" name="check" size="20" maxlength="12" placeholder="4~12자리" class="form-control" required>
+					  </div>
+					</div>
+					
+					<div class="row form-group">
+					  <div class="col-md-12">
+					    <label class="text-black" for="gender">성별</label>
+					    <input type="radio" name="gender" value="M" checked>남자
+						<input type="radio" name="gender" value="W">여자
+					  </div>
+					</div>
+		              
+				<input type="submit" id="submit" class="btn btn-primary py-2 px-4 text-white btn-md font-weight-bold" value="회원가입" disabled>
+				<input type="button" id="cancel" class="btn btn-primary py-2 px-4 text-white btn-md font-weight-bold" value="취소">
+			</form>
+       </div>
+      </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+		<jsp:include page="../include/footer.jsp" />
+    </footer>
+    
+  </div>
+
+	<script src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>"></script>
+	<script	src="<c:url value="/resources/js/jquery-migrate-3.0.1.min.js"/>"></script>
+	<script src="<c:url value="/resources/js/jquery-ui.js"/>"></script>
+	<script src="<c:url value="/resources/js/popper.min.js"/>"></script>
+	<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
+	<script src="<c:url value="/resources/js/owl.carousel.min.js"/>"></script>
+	<script src="<c:url value="/resources/js/jquery.stellar.min.js"/>"></script>
+	<script src="<c:url value="/resources/js/jquery.countdown.min.js"/>"></script>
+	<script	src="<c:url value="/resources/js/jquery.magnific-popup.min.js"/>"></script>
+	<script	src="<c:url value="/resources/js/bootstrap-datepicker.min.js"/>"></script>
+	<script src="<c:url value="/resources/js/aos.js"/>"></script>
+	<script src="<c:url value="/resources/js/rangeslider.min.js"/>"></script>
+	<script src="<c:url value="/resources/js/main.js"/>"></script>
+    
+  </body>
 </html>
