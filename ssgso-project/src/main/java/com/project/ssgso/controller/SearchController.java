@@ -28,14 +28,15 @@ public class SearchController {
       String category = paramMap.get("category");
       List <AccomodationDto> AccomodationDtoList = new ArrayList<AccomodationDto>();
 
-      if (!category.equals("")) {
-         System.out.println("값이잇따!!");
+      if (!category.equals("all")) {
+         System.out.println("값이있따!!");
          AccomodationDtoList = ssgsoServiceImpl.selectAccListUsingCategory(category);
          
          
       } else {
          System.out.println("값이없다!!!");
-         AccomodationDtoList = ssgsoServiceImpl.selectAccListUsingCategory(category);
+         AccomodationDtoList =
+ 				ssgsoServiceImpl.selectAccomodationAllList();
          model.addAttribute("list", AccomodationDtoList);
       }
       

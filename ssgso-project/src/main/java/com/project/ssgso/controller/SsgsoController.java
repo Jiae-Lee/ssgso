@@ -90,20 +90,20 @@ public class SsgsoController {
 	}
 	
 	// 예약페이지(체크인,체크아웃,인원 정하기)
-	@RequestMapping(value="/ssgso/reservation")
-	public String reservation(@RequestParam ("ac_no") int ac_no, Model model) {
-		System.out.println("ac_no=[" + ac_no + "]");
-		
-		AccomodationDto AccomodationDto=
-				ssgsoServiceImpl.selectAccomodation(ac_no);
-		model.addAttribute("AccomodationDto", AccomodationDto);
-		
-		List <RoomDto> RoomDtoList =
-				ssgsoServiceImpl.selectRoomAllList();
-		model.addAttribute("list",RoomDtoList);	
-		
-		return "ssgso/reservation";
-	}
+	   @RequestMapping(value="/ssgso/reservation")
+	   public String reservation(@RequestParam ("ac_no") int ac_no, Model model) {
+	      System.out.println("ac_no=[" + ac_no + "]");
+	      
+	      AccomodationDto AccomodationDto=
+	            ssgsoServiceImpl.selectAccomodation(ac_no);
+	      model.addAttribute("AccomodationDto", AccomodationDto);
+	      
+	      List <RoomDto> RoomDtoList =
+	            ssgsoServiceImpl.selectRoomAllList();
+	      model.addAttribute("list",RoomDtoList);   
+	      
+	      return "ssgso/reservation";
+	   }
 	
 	@RequestMapping(value="/ssgso/payment")
 	public String pqyment(@RequestParam ("ac_no") int ac_no, HttpServletRequest request, Model model) {
