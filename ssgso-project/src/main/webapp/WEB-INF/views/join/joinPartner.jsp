@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmf" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -147,7 +146,7 @@ $(function () {
        <div class="row justify-content-center">
           <div class="col-8">
 
-			<form action="<%=contextPath%>/join/joinSuccess" method="get" class="p-5 bg-white">
+			<form action="<%=contextPath%>/join/joinSuccess" method="post" class="p-5 bg-white">
 				<input type="hidden" name="grade" value="2"/>
 					<div class="row form-group">
 					  <div class="col-md-12">
@@ -203,7 +202,7 @@ $(function () {
 					</div>
 		              
 				<input type="submit" id="submit" class="btn btn-primary py-2 px-4 text-white btn-md font-weight-bold" value="회원가입" disabled>
-				<input type="button" id="cancel" class="btn btn-primary py-2 px-4 text-white btn-md font-weight-bold" value="취소">
+				<input type="button" id="cancel" class="btn btn-primary py-2 px-4 text-white btn-md font-weight-bold" value="초기화">
 			</form>
        </div>
       </div>

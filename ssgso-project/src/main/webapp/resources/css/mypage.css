@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+#content { 
+	width: 1000px; 
+	min-height: 600px; 
+	border: 1px solid #dedcee; 
+	border-radius: 5px; 
+	margin: 10px auto; 
+	padding: 10px; }
+	
 .secLeft { width:20%; min-height: 580px; float:left; margin: 0; list-style-type : none;}
 .mylist { list-style-type: none; text-align : left; }
 

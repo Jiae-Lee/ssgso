@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
-	String contextPath = request.getContextPath();
+   String contextPath = request.getContextPath();
 %>
 <html>
   <head>
@@ -37,7 +37,7 @@
     </div>
     
     <header class="site-navbar py-2 bg-white" role="banner">
-			<jsp:include page="../include/menu.jsp" />
+         <jsp:include page="../include/menu.jsp" />
     </header>
 
     <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(../resources/images/js2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
@@ -47,7 +47,7 @@
             <div class="row justify-content-center">
               <div class="col-md-8 text-center">
                 <h1>숙소</h1>
-                <p class="mb-0">숙소리스트 확인해라ㅡ아아ㅏㅏ라</p>
+                <p class="mb-0">숙소리스트를 확인해보세요!</p>
               </div>
             </div>
           </div>
@@ -55,145 +55,38 @@
       </div>
     </div>  
     
-	<!-- 숙소리스트 -->
+   <!-- 숙소리스트 -->
     <div class="site-section">
       <div class="container">
         <div class="row">
-			<!-- 숙소 목록 -->
+         <!-- 숙소 목록 -->
           <div class="col-lg-8">
             
-			<c:choose>
-				<c:when test="${fn:length(list)>0}">
-					<c:forEach items="${list}" var="dto">
-			            <div class="d-block d-md-flex listing-horizontal">
-			              <a href="#" class="img d-block" style="background-image: url('../resources/images/img_2.jpg')">
-			                <span class="category">호텔</span>
-			              </a>
-			              <div class="lh-content">
-			                <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-			                <h3><a href="<%=contextPath%>/ssgso/ssgsoRankingView?ac_no=${dto.ac_no}">${dto.name}</a></h3>
-			                <p>${dto.address}</p>
-			                <p>
-			                  <span class="icon-star text-warning"></span>
-			                  <span class="icon-star text-warning"></span>
-			                  <span class="icon-star text-warning"></span>
-			                  <span class="icon-star text-warning"></span>
-			                  <span class="icon-star text-warning"></span>
-			                  <span>(42 Reviews)</span>
-			                </p>          
-			              </div>
-			            </div>
-					</c:forEach>
-				</c:when>	
-			</c:choose>
-			
-<!-- 
-            <div class="d-block d-md-flex listing-horizontal">
-              <a href="#" class="img d-block" style="background-image: url('images/img_1.jpg')">
-                <span class="category">Stores</span>
-              </a>
-              <div class="lh-content">
-                <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                <h3><a href="#">Handcrafted Products</a></h3>
-                <p>Don St, Brooklyn, New York</p>
-                <p>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-secondary"></span>
-                  <span>(3 Reviews)</span>
-                </p>
-              </div>
-            </div>
-            
-            <div class="d-block d-md-flex listing-horizontal">
-              <a href="#" class="img d-block" style="background-image: url('images/img_3.jpg')">
-                <span class="category">Events</span>
-              </a>
-              <div class="lh-content">
-                <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                <h3><a href="#">Live Band</a></h3>
-                <p>Don St, Brooklyn, New York</p>
-                <p>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-secondary"></span>
-                  <span>(3 Reviews)</span>
-                </p>
-              </div>
-            </div>
-
-            <div class="d-block d-md-flex listing-horizontal">
-              <a href="#" class="img d-block" style="background-image: url('images/img_2.jpg')">
-                <span class="category">Restaurants</span>
-              </a>
-              <div class="lh-content">
-                <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                <h3><a href="#">Grill and Restaurants</a></h3>
-                <p>Don St, Brooklyn, New York</p>
-                <p>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-secondary"></span>
-                  <span>(3 Reviews)</span>
-                </p>
-              </div>
-            </div>
-
-            <div class="d-block d-md-flex listing-horizontal">
-              <a href="#" class="img d-block" style="background-image: url('images/img_1.jpg')">
-                <span class="category">Stores</span>
-              </a>
-              <div class="lh-content">
-                <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                <h3><a href="#">Handcrafted Products</a></h3>
-                <p>Don St, Brooklyn, New York</p>
-                <p>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-secondary"></span>
-                  <span>(3 Reviews)</span>
-                </p>
-              </div>
-            </div>
-
-            <div class="d-block d-md-flex listing-horizontal">
-              <a href="#" class="img d-block" style="background-image: url('images/img_3.jpg')">
-                <span class="category">Events</span>
-              </a>
-              <div class="lh-content">
-                <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                <h3><a href="#">Live Band</a></h3>
-                <p>Don St, Brooklyn, New York</p>
-                <p>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-secondary"></span>
-                  <span>(3 Reviews)</span>
-                </p>
-              </div>
-            </div>
-
-            <div class="col-12 mt-5 text-center">
-              <div class="custom-pagination">
-                <span>1</span>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <span class="more-page">...</span>
-                <a href="#">10</a>
-              </div>
-            </div>
- 
-           -->           
+	         <c:choose>
+	            <c:when test="${fn:length(list)>0}">
+	               <c:forEach items="${list}" var="dto">
+	                     <div class="d-block d-md-flex listing-horizontal">
+	                       <a href="<%=contextPath%>/ssgso/ssgsoRankingView?ac_no=${dto.ac_no}" class="img d-block" style="background-image: url('${dto.ac_img}')">
+	                         <span class="category">${dto.category}</span>
+	                       </a>
+	                       <div class="lh-content">
+	                         <a href="#" class="bookmark"><span class="icon-heart"></span></a>
+	                         <h3><a href="<%=contextPath%>/ssgso/ssgsoRankingView?ac_no=${dto.ac_no}">${dto.name}</a></h3>
+	                         <p>${dto.address}</p>
+	                         <p>
+	                           <span class="icon-star text-warning"></span>
+	                           <span class="icon-star text-warning"></span>
+	                           <span class="icon-star text-warning"></span>
+	                           <span class="icon-star text-warning"></span>
+	                           <span class="icon-star text-warning"></span>
+	                           <span>(42 Reviews)</span>
+	                         </p>          
+	                       </div>
+	                     </div>
+	               </c:forEach>
+	            </c:when>   
+	         </c:choose>
+         
           </div><!-- end : 숙소리스트 좌측 숙소내용 -->
           <!-- 숙소리스트 우측 검색필터 -->
           <div class="col-lg-3 ml-auto">
@@ -282,23 +175,23 @@
     </div><!-- end : 숙소리스트 -->
 
     <footer class="site-footer">
-		<jsp:include page="../include/footer.jsp" />
+      <jsp:include page="../include/footer.jsp" />
     </footer>
   </div>
 
 
-	<script src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>"></script>
-	<script	src="<c:url value="/resources/js/jquery-migrate-3.0.1.min.js"/>"></script>
-	<script src="<c:url value="/resources/js/jquery-ui.js"/>"></script>
-	<script src="<c:url value="/resources/js/popper.min.js"/>"></script>
-	<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
-	<script src="<c:url value="/resources/js/owl.carousel.min.js"/>"></script>
-	<script src="<c:url value="/resources/js/jquery.stellar.min.js"/>"></script>
-	<script src="<c:url value="/resources/js/jquery.countdown.min.js"/>"></script>
-	<script	src="<c:url value="/resources/js/jquery.magnific-popup.min.js"/>"></script>
-	<script	src="<c:url value="/resources/js/bootstrap-datepicker.min.js"/>"></script>
-	<script src="<c:url value="/resources/js/aos.js"/>"></script>
-	<script src="<c:url value="/resources/js/rangeslider.min.js"/>"></script>
-	<script src="<c:url value="/resources/js/main.js"/>"></script>
+   <script src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>"></script>
+   <script   src="<c:url value="/resources/js/jquery-migrate-3.0.1.min.js"/>"></script>
+   <script src="<c:url value="/resources/js/jquery-ui.js"/>"></script>
+   <script src="<c:url value="/resources/js/popper.min.js"/>"></script>
+   <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
+   <script src="<c:url value="/resources/js/owl.carousel.min.js"/>"></script>
+   <script src="<c:url value="/resources/js/jquery.stellar.min.js"/>"></script>
+   <script src="<c:url value="/resources/js/jquery.countdown.min.js"/>"></script>
+   <script   src="<c:url value="/resources/js/jquery.magnific-popup.min.js"/>"></script>
+   <script   src="<c:url value="/resources/js/bootstrap-datepicker.min.js"/>"></script>
+   <script src="<c:url value="/resources/js/aos.js"/>"></script>
+   <script src="<c:url value="/resources/js/rangeslider.min.js"/>"></script>
+   <script src="<c:url value="/resources/js/main.js"/>"></script>
   </body>
 </html>

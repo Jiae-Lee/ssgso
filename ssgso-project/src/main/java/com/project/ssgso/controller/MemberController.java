@@ -57,7 +57,7 @@ public class MemberController {
 	}	
 		
 	// 회원가입정보를 다 입력하고 회원가입 버튼을 누른다. -> 요청 파라미터 처리 방식
-	@RequestMapping(value = "/join/joinSuccess", method = RequestMethod.GET)
+	@RequestMapping(value = "/join/joinSuccess", method = RequestMethod.POST)
 	public String memberJoin(@RequestParam HashMap<String, String> paramMap, MemberDto memberDto) {
 
 		System.out.println("V::paramMap=" + paramMap);

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
-	String contextPath = request.getContextPath();
+   String contextPath = request.getContextPath();
 %>
 
 <!DOCTYPE html>
@@ -28,76 +28,76 @@
 </head>
 <body>
 
-	<div class="site-wrap">
+   <div class="site-wrap">
 
-		<div class="site-mobile-menu">
-			<div class="site-mobile-menu-header">
-				<div class="site-mobile-menu-close mt-3">
-					<span class="icon-close2 js-menu-toggle"></span>
-				</div>
-			</div>
-			<div class="site-mobile-menu-body"></div>
-		</div>
+      <div class="site-mobile-menu">
+         <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+               <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+         </div>
+         <div class="site-mobile-menu-body"></div>
+      </div>
 
-		<header class="site-navbar py-2 bg-white" role="banner">
-			<jsp:include page="include/menu.jsp" />
-		</header>
+      <header class="site-navbar py-2 bg-white" role="banner">
+         <jsp:include page="include/menu.jsp" />
+      </header>
 
-		<!-- 메인 이미지, 서치 부분 -->
-		<div class="site-blocks-cover overlay"
-			style="background-image: url(<c:url value="/images/hero_1.jpg"/>);" data-aos="fade"
-			data-stellar-background-ratio="0.5">
-			<div class="container">
-				<div class="row align-items-center justify-content-center text-center">
-					<div class="col-md-10">
-						<div class="row justify-content-center mb-4">
-							<div class="col-md-8 text-center">
-								<h1 data-aos="fade-up">
-									Search for <span class="typed-words"></span>
-								</h1>
-								<p data-aos="fade-up" data-aos-delay="100">
-									원하는 숙소이름, 장소, 해쉬태그로 검색해보세요!
-								</p>
-							</div>
-						</div>
+      <!-- 메인 이미지, 서치 부분 -->
+      <div class="site-blocks-cover overlay"
+         style="background-image: url(<c:url value="/images/hero_1.jpg"/>);" data-aos="fade"
+         data-stellar-background-ratio="0.5">
+         <div class="container">
+            <div class="row align-items-center justify-content-center text-center">
+               <div class="col-md-10">
+                  <div class="row justify-content-center mb-4">
+                     <div class="col-md-8 text-center">
+                        <h1 data-aos="fade-up">
+                           Search for <span class="typed-words"></span>
+                        </h1>
+                        <p data-aos="fade-up" data-aos-delay="100">
+                           원하는 숙소이름, 장소, 해쉬태그로 검색해보세요!
+                        </p>
+                     </div>
+                  </div>
 
-						<div class="form-search-wrap p-2" data-aos="fade-up"
-							data-aos-delay="200">
-							<form method="post" action="<%=contextPath%>/search" >
-								<div class="row align-items-center">
-									<div class="col-lg-12 col-xl-4 no-sm-border border-right">
-										<input type="text" name="keyword" class="form-control" placeholder="What are you looking for?">
-									</div>
-									<div class="col-lg-12 col-xl-3 no-sm-border border-right">
-										<div class="wrap-icon">
-											<span class="icon icon-room"></span> 
-											<input type="text" name="location" class="form-control" placeholder="Location">
-										</div>
+                  <div class="form-search-wrap p-2" data-aos="fade-up"
+                     data-aos-delay="200">
+                     <form method="post" action="<%=contextPath%>/search" >
+                        <div class="row align-items-center">
+                           <div class="col-lg-12 col-xl-4 no-sm-border border-right">
+                              <input type="text" name="keyword" class="form-control" placeholder="What are you looking for?">
+                           </div>
+                           <div class="col-lg-12 col-xl-3 no-sm-border border-right">
+                              <div class="wrap-icon">
+                                 <span class="icon icon-room"></span> 
+                                 <input type="text" name="location" class="form-control" placeholder="Location">
+                              </div>
 
-									</div>
-									<div class="col-lg-12 col-xl-3">
-										<div class="select-wrap">
-											<span class="icon"><span class="icon-keyboard_arrow_down"></span></span> 
-											<select class="form-control" name="category" id="">
-												<option value="all">All Categories</option>
-									            <c:forEach var="cat" items="${list}">
-									                <option value="${cat.cat_val}">${cat.cat_val}</option>
-									            </c:forEach>
-											</select>
-										</div>
-									</div>
-									<div class="col-lg-12 col-xl-2 ml-auto text-right">
-										<input type="submit" class="btn btn-primary" value="Search">
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                           </div>
+                           <div class="col-lg-12 col-xl-3">
+                              <div class="select-wrap">
+                                 <span class="icon"><span class="icon-keyboard_arrow_down"></span></span> 
+                                 <select class="form-control" name="category" id="">
+                                    <option value="all">All Categories</option>
+                                       <c:forEach var="cat" items="${list}">
+                                           <option value="${cat.cat_val}">${cat.cat_val}</option>
+                                       </c:forEach>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="col-lg-12 col-xl-2 ml-auto text-right">
+                              <input type="submit" class="btn btn-primary" value="Search">
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
 
-		
+      
       <div class="site-section" data-aos="fade">
          <div class="container">
             <div class="row justify-content-center mb-5">
