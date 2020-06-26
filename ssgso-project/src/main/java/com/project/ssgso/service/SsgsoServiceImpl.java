@@ -21,6 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.ssgso.dao.SsgsoDaoImpl;
 import com.project.ssgso.dto.AccomodationDto;
 import com.project.ssgso.dto.CategoryDto;
+import com.project.ssgso.dto.HashtagDto;
 import com.project.ssgso.dto.RoomDto;
 
 @Service
@@ -123,6 +124,18 @@ public class SsgsoServiceImpl implements ISsgsoService{
 	@Override
 	public int getAcnoUsingName(String name) {
 		return ssgsoDaoImpl.getAcnoUsingName(name);
+	}
+
+	@Override
+	public List<AccomodationDto> selectAccListUsingCategory(String category) {
+		// TODO Auto-generated method stub
+		return ssgsoDaoImpl.selectAccListUsingCategory(category);
+	}
+
+	@Override
+	public List<HashtagDto> selectHashListUsingAcno(int ac_no) {
+		// TODO Auto-generated method stub
+		return ssgsoDaoImpl.selectHashListUsingAcno(ac_no);
 	}
 
 }

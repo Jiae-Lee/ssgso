@@ -66,7 +66,13 @@
             <h5>&nbsp; 정보</h5>
             <p>${AccomodationDto.info}</p>
             <p class="mb-4">
-            	두번째문단 더 넣을 정보
+			<c:choose>
+				<c:when test="${fn:length(hashlist)>0}">
+					<c:forEach items="${hashlist}" var="dto">
+			                <span class="text-warning">${dto.hash_val}&nbsp;</span>
+					</c:forEach>
+				</c:when>	
+			</c:choose>
             </p>
 
             <ul class="ul-check list-unstyled success">
