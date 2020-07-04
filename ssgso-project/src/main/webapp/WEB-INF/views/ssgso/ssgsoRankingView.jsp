@@ -52,7 +52,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>	
     </div>  
         
     <div class="site-section">
@@ -65,10 +65,15 @@
           </div>
           <div class="col-md-5 ml-auto">
             <h2 class="text-primary">${AccomodationDto.name}</h2>
-            <h5>&nbsp; 정보</h5>
             <p>${AccomodationDto.info}</p>
             <p class="mb-4">
-            	두번째문단 더 넣을 정보
+			<c:choose>
+				<c:when test="${fn:length(hashlist)>0}">
+					<c:forEach items="${hashlist}" var="dto">
+			                <span class="text-warning">${dto.hash_val}&nbsp;</span>
+					</c:forEach>
+				</c:when>	
+			</c:choose>
             </p>
 
             <ul class="ul-check list-unstyled success">
@@ -79,7 +84,7 @@
         </div>
         
         <div style="float:right;">
-			<input type="button" value="예약하기" onClick="window.open('../ssgso/reservation')" class="btn btn-primary py-2 px-4 text-white btn-md font-weight-bold">
+			<input type="button" value="예약하기" onClick="window.open('reservation')" class="btn btn-primary py-2 px-4 text-white btn-md font-weight-bold">
 		</div>
       </div>
       </form>

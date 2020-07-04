@@ -64,7 +64,8 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value="/mypage/mySsgsoWrite")
-	public String mySsgsoWrite(Model model) {
+	public String mySsgsoWrite(Model model, HttpSession session) {
+		System.out.println("memNo = " + session.getAttribute("memNo").toString());
 		
 		List <CategoryDto> categoryDtoList = ssgsoServiceImpl.selectCategoryAllList();
 		model.addAttribute("list", categoryDtoList);
@@ -76,10 +77,10 @@ public class MypageController {
 	@RequestMapping(value="/mypage/mySsgsoCreate")
 	public String ssgsoCreate(@RequestParam HashMap<String, String> paramMap, HttpSession session, Model model) {
 		System.out.println("paramMap::before = " + paramMap);
-		System.out.println("memNo = " + session.getAttribute("memberNo"));
 		
 		String roadFullAddr = paramMap.get("roadFullAddr");
 		String jsonString =  ssgsoServiceImpl.getKakaoApiFromAddress(roadFullAddr);
+		System.out.println("jsonString = " + jsonString );
 		
 		System.out.println(paramMap.get("roadFullAddr"));
 		
@@ -87,7 +88,7 @@ public class MypageController {
 		HashMap<String, String> XYMap = ssgsoServiceImpl.getXYMapfromJson(jsonString);
 		paramMap.put("latitude", XYMap.get("y"));
 		paramMap.put("longitude", XYMap.get("x"));
-		paramMap.put("mem_no", session.getAttribute("memberNo").toString());
+		paramMap.put("mem_no", session.getAttribute("memNo").toString());
 		
 		
 		System.out.println("paramMap::after = " + paramMap);

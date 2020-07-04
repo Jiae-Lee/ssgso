@@ -106,6 +106,7 @@ public class SsgsoServiceImpl implements ISsgsoService{
 			
 			@SuppressWarnings("unchecked")
 			List<Map<String, String>> docList =  (List<Map<String, String>>) jsonMap.get("documents");	
+			System.out.println("docList = " + docList);
 		
 			Map<String, String> adList = (Map<String, String>) docList.get(0);
 			XYMap.put("x",adList.get("x"));
