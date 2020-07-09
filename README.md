@@ -1,2 +1,2 @@
-# ssgo
+# ssgso
 ✈️🗺 Spring Web Project - travel reservations
